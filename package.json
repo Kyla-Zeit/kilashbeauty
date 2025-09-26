@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+      "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/copy-out-to-root.mjs",
+    "deploy": "npm run build && git add -A && git commit -m \"publish: build to root\" || echo no-changes && git push"
     "export": "next export -o docs",
     "build:pages": "npm run build && npm run export",
     "start": "next start"
