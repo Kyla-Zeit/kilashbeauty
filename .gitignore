@@ -1,0 +1,28 @@
+# deps
+/node_modules
+
+# next
+/.next
+/out            # build dir; we copy its contents to root on publish
+
+# builds you don't commit
+/build
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# env
+.env*
+.vercel
+
+# typescript noise
+*.tsbuildinfo
+next-env.d.ts
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
