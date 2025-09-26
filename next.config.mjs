@@ -1,18 +1,14 @@
+// next.config.mjs
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  // Export static HTML for GitHub Pages
-  output: 'export',
 
-  // You’re hosting under https://kyla-zeit.github.io/kilashbeauty/
-  // so Next needs a basePath and assetPrefix
-  basePath: '/kilashbeauty',
-  assetPrefix: '/kilashbeauty/',
+const repo = 'kilashbeauty'
+const isProd = process.env.NODE_ENV === 'production'
+const base = isProd ? `/${repo}` : ''
 
-  // Next/Image has no server on Pages
+export default {
+  output: 'export',          // Next 14 way to static-export
+  basePath: base,            // routes live under /kilashbeauty
+  assetPrefix: base + '/',   // assets load from /kilashbeauty/_next/...
   images: { unoptimized: true },
-
-  // Optional but helps with static hosting
-  trailingSlash: true,
-};
-
-export default nextConfig;
+  trailingSlash: true
+}
