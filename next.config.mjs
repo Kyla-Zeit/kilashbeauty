@@ -8,4 +8,7 @@ export default {
   assetPrefix: base + '/',
   images: { unoptimized: true },
   trailingSlash: true,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: base
+  }
 }
