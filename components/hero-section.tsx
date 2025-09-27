@@ -1,4 +1,3 @@
-// components/hero-section.tsx
 'use client'
 
 import { Button } from '@/components/ui/button'
@@ -6,46 +5,28 @@ import { Star, Award, Users } from 'lucide-react'
 import { withBase } from '@/lib/basePath'
 
 export function HeroSection() {
-  // Tweak these two if you change your header size or want more/less push
-  const HEADER_H = 72      // your nav height in px
-  const CONTENT_PUSH = 32  // extra visual nudge for the text (px)
-
-  // Move the photo DOWN by raising the background-position Y
-  // 50% = center, 60% shows a lower portion of the image
-  const bgY = '60%'
-
   const bg = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
 
   return (
-    <section
-      id="home"
-      // Full viewport minus the fixed header; keep some top padding for breathing room
-      className="relative overflow-hidden"
-      style={{
-        minHeight: `calc(100svh - ${HEADER_H}px)`,
-        paddingTop: `max(16px, env(safe-area-inset-top))`
-      }}
-    >
-      {/* Background image */}
+    <section id="home" className="relative overflow-hidden">
+      {/* Background image: lower the focal point on larger screens */}
       <div
-        className="absolute inset-0 bg-cover"
-        style={{
-          backgroundImage: `url(${bg})`,
-          backgroundPosition: `center ${bgY}`
-        }}
+        className="
+          absolute inset-0 bg-cover bg-center
+          md:bg-[position:center_70%]
+          lg:bg-[position:center_78%]
+        "
+        style={{ backgroundImage: `url(${bg})` }}
       />
-
-      {/* Dark overlay */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black/40" />
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        {/* Center the block vertically, then nudge it DOWN a bit */}
-        <div className="grid h-full place-items-center">
-          <div
-            className="max-w-5xl text-center"
-            style={{ transform: `translateY(${CONTENT_PUSH}px)` }}
-          >
+      {/* Content wrapper */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Full-height area minus your fixed header (≈72px), 
+            then push content DOWN with padding-top */}
+        <div className="min-h-[calc(100svh-72px)] flex flex-col items-center pt-24 md:pt-36 lg:pt-44 pb-16">
+          <div className="max-w-5xl text-center">
             <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Transform Your Look with{' '}
               <span className="text-purple-300">Stunning Lash Extensions</span>
