@@ -11,14 +11,17 @@ export function HeroSection() {
   return (
     <section id="home" className="relative overflow-hidden">
       {/* Lower the focal point so the eye sits lower */}
-      <div
-        className="
-          absolute inset-0 bg-cover bg-center
-          md:bg-[position:center_72%]
-          lg:bg-[position:center_82%]
-        "
-        style={{ backgroundImage: `url(${bg})` }}
-      />
+ <div
+  className="
+    absolute inset-0 bg-cover
+    bg-[position:center_88%]
+    sm:bg-[position:center_90%]
+    md:bg-[position:center_94%]
+    lg:bg-[position:center_97%]
+    xl:bg-[position:center_99%]
+  "
+  style={{ backgroundImage: `url(${bg})` }}
+/>
       <div className="absolute inset-0 bg-black/40" />
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
