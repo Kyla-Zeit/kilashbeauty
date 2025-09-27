@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 
 const OUT = path.resolve("out");
-const PUB = path.resolve("public");
 const ROOT = path.resolve(".");
 
 if (!fs.existsSync(OUT)) {
@@ -17,8 +16,8 @@ const toRemove = [
 ];
 for (const p of toRemove) fs.rmSync(path.join(ROOT, p), { recursive: true, force: true });
 
+// copy out/* → root
 function copyDir(src, dst) {
-  if (!fs.existsSync(src)) return;
   fs.mkdirSync(dst, { recursive: true });
   for (const e of fs.readdirSync(src, { withFileTypes: true })) {
     const s = path.join(src, e.name);
@@ -26,14 +25,9 @@ function copyDir(src, dst) {
     e.isDirectory() ? copyDir(s, d) : fs.copyFileSync(s, d);
   }
 }
-
-// 1) copy static export
 copyDir(OUT, ROOT);
 
-// 2) ensure /public assets land at root too (in case Next didn’t copy them)
-copyDir(PUB, ROOT);
-
-// 3) keep Jekyll out of our business
+// keep Jekyll out of our files
 fs.writeFileSync(path.join(ROOT, ".nojekyll"), "");
 
-console.log("Published static build to REPO ROOT (out + public).");
+console.log("Published static build to repo ROOT (out only).");
