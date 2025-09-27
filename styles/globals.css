@@ -123,3 +123,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ---- simple animation utilities ---- */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Base class */
+.animate-fade-up { 
+  animation: fade-up .7s ease-out both; 
+  will-change: transform, opacity;
+}
+.animate-fade-in { 
+  animation: fade-in .7s ease-out both; 
+  will-change: opacity;
+}
+
+/* Stagger helpers */
+.animate-delay-100 { animation-delay: .1s; }
+.animate-delay-200 { animation-delay: .2s; }
+.animate-delay-300 { animation-delay: .3s; }
+.animate-delay-400 { animation-delay: .4s; }
+.animate-delay-500 { animation-delay: .5s; }
