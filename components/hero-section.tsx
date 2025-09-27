@@ -1,18 +1,16 @@
-// components/ui/hero-section.tsx
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'   // keep this if your Button is in components/ui
 import { Star, Award, Users } from 'lucide-react'
 import { withBase } from '@/lib/basePath'
 
 export function HeroSection() {
-  // Adjust the image path to any file you placed in /public
   const bg = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
 
   return (
     <section
       id="home"
-      className="relative overflow-hidden min-h-[calc(100svh-64px)]" // change 64px if your header height differs
+      className="relative overflow-hidden min-h-[calc(100svh-64px)]"
     >
       {/* Background image */}
       <div
@@ -38,9 +36,7 @@ export function HeroSection() {
 
             <div className="mt-6 flex flex-wrap gap-3 justify-center">
               <Button size="lg">Book Your Appointment</Button>
-              <Button variant="outline" size="lg">
-                View Gallery
-              </Button>
+              <Button variant="outline" size="lg">View Gallery</Button>
             </div>
 
             {/* Stats */}
@@ -52,7 +48,6 @@ export function HeroSection() {
                   <div className="text-xs">Average Rating</div>
                 </div>
               </div>
-
               <div className="flex items-center justify-center gap-2">
                 <Users className="h-5 w-5" />
                 <div className="text-left">
@@ -60,7 +55,6 @@ export function HeroSection() {
                   <div className="text-xs">Happy Clients</div>
                 </div>
               </div>
-
               <div className="flex items-center justify-center gap-2">
                 <Award className="h-5 w-5" />
                 <div className="text-left">
