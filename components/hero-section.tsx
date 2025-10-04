@@ -1,4 +1,3 @@
-// components/hero-section.tsx
 'use client'
 
 import Link from 'next/link'
@@ -7,53 +6,32 @@ import { Button } from '@/components/ui/button'
 import { Star, Users, Award } from 'lucide-react'
 
 export function HeroSection() {
-  const img = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
-
-  // Tweak this to “zoom out” more or less:
-  // 100% = natural contain, 95–90% shows more of the image (smaller in frame)
-  const CONTAIN_SIZE = '92%'
+  // Make sure this file lives in /public
+  const bg = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
 
   return (
     <section
       id="home"
-      className="relative overflow-hidden min-h-[min(90svh,960px)]"
+      className="relative overflow-hidden min-h-[calc(100svh-64px)]"
       aria-label="Hero"
     >
-      {/* Background stack */}
-      <div className="absolute inset-0">
-        {/* 1) Fill layer – blurred & darkened cover so we never see empty space */}
+      {/* Feathered wrapper – applies to BG + overlay */}
+      <div className="absolute inset-0 edge-feather-b edge-feather-b--fallback">
+        {/* Background image */}
         <div
-          className="absolute inset-0 bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${img})`,
-            backgroundSize: 'cover',
-            filter: 'blur(10px) brightness(0.85)',
-            transform: 'scale(1.06)', // hide blur edges
+          className="absolute inset-0 bg-cover"
+    style={{
+      backgroundImage: `url(${bg})`,
+      backgroundPosition: '50% 30%',
           }}
-          aria-hidden="true"
         />
-
-        {/* 2) Foreground photo – contained so we see “more” of the image */}
-        <div
-          className="absolute inset-0 bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${img})`,
-            backgroundSize: CONTAIN_SIZE,
-          }}
-          aria-hidden="true"
-        />
-
-        {/* 3) Soft dark overlay for text contrast */}
-        <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
-
-        {/* If you want the subtle 5–8px bottom feather as well,
-            add your utility class here: edge-feather-b */}
-        {/* <div className="absolute inset-0 edge-feather-b" aria-hidden="true" /> */}
+        {/* Dark overlay for contrast */}
+        <div className="absolute inset-0 bg-black/45" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 grid h-full place-items-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl w-full text-center py-16 md:py-20 lg:py-24">
+        <div className="max-w-5xl w-full text-center py-20 md:py-24 lg:py-28">
           <h1 className="text-white font-bold leading-tight text-4xl md:text-5xl lg:text-6xl animate-fade-up">
             Transform Your Look with
           </h1>
