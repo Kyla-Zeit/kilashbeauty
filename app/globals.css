@@ -205,11 +205,11 @@
           mask-composite: intersect;   /* Firefox */
 }
 
-/* Intensity helpers (pick one) */
-.edge-feather-sm { --fade: 5px; }   /* subtle (recommended) */
+/* Intensity helpers (pick one) 
+.edge-feather-sm { --fade: 5px; }   /* subtle (recommended) 
 
 
-/* Safari fallback (no mask-composite) */
+Safari fallback (no mask-composite) 
 .edge-feather--fallback::after {
   content: "";
   position: absolute;
@@ -222,8 +222,8 @@
     linear-gradient(to left,  var(--bg) 0, rgba(255,255,255,0) var(--fade)),
     linear-gradient(to bottom,var(--bg) 0, rgba(255,255,255,0) var(--fade)),
     linear-gradient(to top,   var(--bg) 0, rgba(255,255,255,0) var(--fade));
- /*opacity: 2;  lowered from .65 so it’s much softer */
-}
+ /*opacity: 2;  lowered from .65 so it’s much softer 
+}*/
 
 /* ------- Bottom-only feather ------- */
 /* Visible everywhere except the last --fade px at the bottom */
