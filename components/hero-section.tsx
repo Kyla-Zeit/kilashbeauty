@@ -20,11 +20,9 @@ export function HeroSection() {
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover"
-          style={{
-            backgroundImage: `url(${bg})`,
-            backgroundPosition: '50% 30%',
-            backgroundSize: 'cover',      // ← fill the box (no side bars)
-            backgroundRepeat: 'no-repeat',
+    style={{
+      backgroundImage: `url(${bg})`,
+      backgroundPosition: '50% 30%',
           }}
         />
         {/* Dark overlay for contrast */}
