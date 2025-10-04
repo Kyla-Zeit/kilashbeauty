@@ -47,31 +47,35 @@ export function HeroSection() {
               <Button variant="outline" size="lg">View Gallery</Button>
             </div>
 
-            {/* Stats */}
-            <div className="mt-10 grid grid-cols-3 gap-6 text-white/80 max-w-xl mx-auto
-                            animate-fade-up animate-delay-400">
-              <div className="flex items-center justify-center gap-2">
-                <Star className="h-5 w-5" />
-                <div className="text-left">
-                  <div className="text-sm font-semibold">5.0</div>
-                  <div className="text-xs">Average Rating</div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                <Users className="h-5 w-5" />
-                <div className="text-left">
-                  <div className="text-sm font-semibold">500+</div>
-                  <div className="text-xs">Happy Clients</div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                <Award className="h-5 w-5" />
-                <div className="text-left">
-                  <div className="text-sm font-semibold">3+</div>
-                  <div className="text-xs">Years Experience</div>
-                </div>
-              </div>
-            </div>
+{/* Stats */}
+<div className="mt-8 grid w-full max-w-5xl grid-cols-3 items-center gap-8 text-white/95">
+  {/* Rating */}
+  <div className="flex items-center justify-center gap-3">
+    <Star className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 text-white" aria-hidden />
+    <div className="text-left">
+      <div className="text-xl sm:text-2xl md:text-3xl font-semibold leading-none">5.0</div>
+      <div className="text-sm sm:text-base opacity-90">Average Rating</div>
+    </div>
+  </div>
+
+  {/* Clients */}
+  <div className="flex items-center justify-center gap-3">
+    <Users className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 text-white" aria-hidden />
+    <div className="text-left">
+      <div className="text-xl sm:text-2xl md:text-3xl font-semibold leading-none">500+</div>
+      <div className="text-sm sm:text-base opacity-90">Happy Clients</div>
+    </div>
+  </div>
+
+  {/* Experience */}
+  <div className="flex items-center justify-center gap-3">
+    <Award className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 text-white" aria-hidden />
+    <div className="text-left">
+      <div className="text-xl sm:text-2xl md:text-3xl font-semibold leading-none">3+</div>
+      <div className="text-sm sm:text-base opacity-90">Years Experience</div>
+    </div>
+  </div>
+</div>
           </div>
         </div>
       </div>
