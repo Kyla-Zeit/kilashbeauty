@@ -12,7 +12,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden min-h-[calc(100svh-64px)]"
+      className="relative overflow-hidden min-h-[calc(92svh-64px)]"
       aria-label="Hero"
     >
       {/* Feathered wrapper – applies to BG + overlay */}
