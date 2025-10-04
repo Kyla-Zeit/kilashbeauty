@@ -205,26 +205,6 @@
           mask-composite: intersect;   /* Firefox */
 }
 
-/* Intensity helpers (pick one) 
-.edge-feather-sm { --fade: 5px; }   /* subtle (recommended) 
-
-
-Safari fallback (no mask-composite) 
-.edge-feather--fallback::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  --bg: var(--background, #fff);
-  --fade: var(--fade, 80px);
-  background:
-    linear-gradient(to right, var(--bg) 0, rgba(255,255,255,0) var(--fade)),
-    linear-gradient(to left,  var(--bg) 0, rgba(255,255,255,0) var(--fade)),
-    linear-gradient(to bottom,var(--bg) 0, rgba(255,255,255,0) var(--fade)),
-    linear-gradient(to top,   var(--bg) 0, rgba(255,255,255,0) var(--fade));
- /*opacity: 2;  lowered from .65 so it’s much softer 
-}*/
-
 /* ------- Bottom-only feather ------- */
 /* Visible everywhere except the last --fade px at the bottom */
 .edge-feather-b {
