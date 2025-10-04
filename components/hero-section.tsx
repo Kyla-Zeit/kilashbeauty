@@ -7,54 +7,37 @@ import { Button } from '@/components/ui/button'
 import { Star, Users, Award } from 'lucide-react'
 
 export function HeroSection() {
+  // image must exist in /public
   const bg = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
 
   return (
     <section
       id="home"
-      aria-label="Hero"
       className="relative overflow-hidden min-h-[calc(100svh-64px)]"
+      aria-label="Hero"
     >
-      {/* --- Background stack --- */}
-      <div className="absolute inset-0">
-        {/* Sharp base image */}
+      {/* Feathered wrapper — mask applies to BOTH the bg image and the dark overlay */}
+      <div className="absolute inset-0 soft-edges">
+        {/* Background image */}
         <div
-          className="absolute inset-0 bg-cover bg-center animate-scale-in"
+          className="absolute inset-0 bg-cover"
           style={{
             backgroundImage: `url(${bg})`,
+            // show more of the lower lashes
             backgroundPosition: '50% 30%',
           }}
         />
-
-        {/* Blurred edges – masked so only the perimeter shows */}
-        <div
-          className="absolute inset-0 bg-cover bg-center animate-fade-in"
-          style={{
-            backgroundImage: `url(${bg})`,
-            backgroundPosition: '50% 65%',
-            filter: 'blur(12px)',
-            transform: 'scale(1.02)',
-            // Show blur mostly at the edges; hide the center
-            WebkitMaskImage:
-              'radial-gradient(circle at center, rgba(0,0,0,0) 56%, rgba(0,0,0,1) 78%)',
-            maskImage:
-              'radial-gradient(circle at center, rgba(0,0,0,0) 56%, rgba(0,0,0,1) 78%)',
-          }}
-        />
-
-        {/* Optional vignette to gently darken corners */}
-        <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_160px_rgba(0,0,0,0.35)]" />
+        {/* Dark overlay for contrast */}
+        <div className="absolute inset-0 bg-black/45" />
       </div>
 
-      {/* Dark overlay for text contrast */}
-      <div className="absolute inset-0 bg-black/45 animate-fade-in animate-delay-200" />
-
-      {/* --- Content --- */}
+      {/* Content */}
       <div className="relative z-10 grid h-full place-items-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl w-full text-center py-16 md:py-20 lg:py-24">
-          <h1 className="text-white font-bold leading-tight text-4xl md:text-5xl lg:text-6xl animate-fade-up animate-delay-100">
+        <div className="max-w-5xl w-full text-center py-20 md:py-24 lg:py-28">
+          <h1 className="text-white font-bold leading-tight text-4xl md:text-5xl lg:text-6xl animate-fade-up">
             Transform Your Look with
           </h1>
+
           <h2 className="mt-2 text-purple-300 font-extrabold leading-tight text-4xl md:text-5xl lg:text-6xl animate-fade-up animate-delay-200">
             Stunning Lash Extensions
           </h2>
@@ -65,9 +48,9 @@ export function HeroSection() {
           </p>
 
           {/* CTAs */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 animate-fade-up animate-delay-400">
             <Link href="#booking" aria-label="Book Your Appointment">
-              <Button className="h-12 px-6 text-base md:h-14 md:px-8 md:text-lg font-semibold shadow-lg shadow-fuchsia-700/25 hover-lift animate-fade-up animate-delay-400">
+              <Button className="h-12 px-6 text-base md:h-14 md:px-8 md:text-lg font-semibold shadow-lg shadow-fuchsia-700/25">
                 Book Your Appointment
               </Button>
             </Link>
@@ -75,7 +58,7 @@ export function HeroSection() {
             <Link href="#gallery" aria-label="View Gallery">
               <Button
                 variant="outline"
-                className="h-12 px-6 text-base md:h-14 md:px-8 md:text-lg bg-white/90 text-gray-900 hover:bg-white shadow hover-lift animate-fade-up animate-delay-500"
+                className="h-12 px-6 text-base md:h-14 md:px-8 md:text-lg bg-white/90 text-gray-900 hover:bg-white shadow"
               >
                 View Gallery
               </Button>
