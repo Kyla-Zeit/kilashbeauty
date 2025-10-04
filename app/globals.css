@@ -222,5 +222,5 @@
     linear-gradient(to left,  var(--bg) 0, rgba(255,255,255,0) var(--fade)),
     linear-gradient(to bottom,var(--bg) 0, rgba(255,255,255,0) var(--fade)),
     linear-gradient(to top,   var(--bg) 0, rgba(255,255,255,0) var(--fade));
-  opacity: .35; /* lowered from .65 so it’s much softer */
+  opacity: .65; /* lowered from .65 so it’s much softer */
 }
