@@ -176,9 +176,9 @@
 }
 
 /* ---------- EDGE FEATHER (corners/edges soften) ---------- */
-/* Mask-based feather (modern browsers) */
+/* Base mask (modern browsers) */
 .edge-feather {
-  --fade: 110px; /* tweak 60–160px */
+  --fade: 80px; /* default; overridden by -sm/-md/-lg below */
   -webkit-mask-image:
     linear-gradient(to right,
       transparent 0,
@@ -205,18 +205,23 @@
           mask-composite: intersect;   /* Firefox */
 }
 
-/* Safari (no mask-composite): overlay subtle gradients */
+/* Intensity helpers (pick one) */
+.edge-feather-sm { --fade: 48px; }   /* subtle (recommended) */
+.edge-feather-md { --fade: 80px; }   /* medium */
+.edge-feather-lg { --fade: 120px; }  /* strong */
+
+/* Safari fallback (no mask-composite) */
 .edge-feather--fallback::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  --fade: 110px;                  /* keep in sync with .edge-feather */
-  --bg: var(--background, #fff);  /* page background */
+  --bg: var(--background, #fff);
+  --fade: var(--fade, 80px);
   background:
     linear-gradient(to right, var(--bg) 0, rgba(255,255,255,0) var(--fade)),
     linear-gradient(to left,  var(--bg) 0, rgba(255,255,255,0) var(--fade)),
     linear-gradient(to bottom,var(--bg) 0, rgba(255,255,255,0) var(--fade)),
     linear-gradient(to top,   var(--bg) 0, rgba(255,255,255,0) var(--fade));
-  opacity: .65; /* feel: .45–.75 */
+  opacity: .35; /* lowered from .65 so it’s much softer */
 }
