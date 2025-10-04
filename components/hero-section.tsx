@@ -20,9 +20,13 @@ export function HeroSection() {
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover"
-    style={{
-      backgroundImage: `url(${bg})`,
-      backgroundPosition: '50% 30%',
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundPosition: '50% 30%',
+            // ↓↓↓ Zoom OUT by using a percentage. Smaller % shows more of the photo.
+            // Try 95%, 92%, 90% etc.
+            backgroundSize: '92%',
+            backgroundRepeat: 'no-repeat',
           }}
         />
         {/* Dark overlay for contrast */}
