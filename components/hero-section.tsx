@@ -23,7 +23,7 @@ export function HeroSection() {
           style={{
             backgroundImage: `url(${bg})`,
             /* show more of the lower lashes */
-            backgroundPosition: '50% 65%',
+            backgroundPosition: '50% 30%',
           }}
         />
         {/* Dark overlay for contrast */}
