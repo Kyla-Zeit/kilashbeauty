@@ -224,3 +224,36 @@
     linear-gradient(to top,   var(--bg) 0, rgba(255,255,255,0) var(--fade));
  /*opacity: 2;  lowered from .65 so it’s much softer */
 }
+
+/* ------- Bottom-only feather ------- */
+/* Visible everywhere except the last --fade px at the bottom */
+.edge-feather-b {
+  --fade: 5px; /* tweak to 6–10px if 5px is too subtle on your screen */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - var(--fade)),
+    transparent 100%
+  );
+          mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - var(--fade)),
+    transparent 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+}
+
+/* quick size variants (optional) */
+.edge-feather-b-8  { --fade: 8px;  }
+.edge-feather-b-12 { --fade: 12px; }
+
+/* Safari fallback: draw a tiny bottom gradient to the page background */
+.edge-feather-b--fallback::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: var(--fade, 5px);
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), var(--background, #fff));
+  opacity: .45; /* lower if you want even softer */
+}

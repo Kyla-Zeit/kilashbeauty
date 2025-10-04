@@ -16,14 +16,13 @@ export function HeroSection() {
       aria-label="Hero"
     >
       {/* Feathered wrapper – applies to BG + overlay */}
-      <div className="absolute inset-0 edge-feather edge-feather-sm edge-feather--fallback">
+      <div className="absolute inset-0 edge-feather-b edge-feather-b--fallback">
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover"
-          style={{
-            backgroundImage: `url(${bg})`,
-            /* show more of the lower lashes */
-            backgroundPosition: '50% 30%',
+    style={{
+      backgroundImage: `url(${bg})`,
+      backgroundPosition: '50% 30%',
           }}
         />
         {/* Dark overlay for contrast */}
