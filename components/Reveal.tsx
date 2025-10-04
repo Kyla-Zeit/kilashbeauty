@@ -1,70 +1,75 @@
-// components/Reveal.tsx
 'use client'
 
 import React, { useEffect, useRef } from 'react'
+import clsx from 'clsx'
+
+type TagName = keyof JSX.IntrinsicElements
 
 type RevealProps = {
-  children: React.ReactNode
-  /** Extra classes for your wrapper */
+  /** Which element to render (div by default) */
+  as?: TagName
+  /** Tailwind animation utility to apply when visible */
+  animation?: 'animate-fade-up' | 'animate-fade-in' | 'animate-fade-in-left' | 'animate-fade-in-right' | 'animate-scale-in'
+  /** Optional extra classes */
   className?: string
-  /** Wrapper tag */
-  as?: keyof JSX.IntrinsicElements
-  /** Which animation utility to use (matches your CSS: .animate-fade-up, etc.) */
-  animation?: 'fade-up' | 'fade-in' | 'fade-in-left' | 'fade-in-right' | 'scale-in'
-  /** Animation delay in ms */
+  /** Delay in ms (inline style) */
   delay?: number
-  /** Reveal once (true) or replay when scrolling out/in (false) */
-  once?: boolean
-  /** IntersectionObserver threshold */
+  /** IntersectionObserver options */
   threshold?: number
-  /** IntersectionObserver rootMargin */
   rootMargin?: string
-}
+  /** If false, animation will replay when you scroll away and back */
+  once?: boolean
+  children?: React.ReactNode
+} & React.HTMLAttributes<HTMLElement>
 
 export default function Reveal({
-  children,
-  className = '',
   as = 'div',
-  animation = 'fade-up',
+  animation = 'animate-fade-up',
+  className,
   delay = 0,
+  threshold = 0.18,
+  rootMargin = '0px 0px -10% 0px',
   once = true,
-  threshold = 0.2,
-  rootMargin = '0px',
+  children,
+  ...rest
 }: RevealProps) {
+  const Tag = as as any
   const ref = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     const el = ref.current
-    if (!el) return
+    if (!el || typeof window === 'undefined') return
 
-    // Start hidden, add the animation class, and set delay (if any)
+    // start hidden
     el.classList.add('animate-on-scroll')
-    el.classList.add(`animate-${animation}`)
-    if (delay) el.style.animationDelay = `${delay}ms`
 
     const io = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Play
             el.classList.remove('animate-on-scroll')
+            el.classList.add(animation)
             if (once) io.unobserve(el)
           } else if (!once) {
-            // Reset so it replays when it re-enters
+            el.classList.remove(animation)
             el.classList.add('animate-on-scroll')
           }
         })
       },
-      { threshold, rootMargin }
+      { threshold, root: null, rootMargin }
     )
 
     io.observe(el)
     return () => io.disconnect()
-  }, [animation, delay, once, threshold, rootMargin])
+  }, [animation, threshold, rootMargin, once])
 
-  const Tag = as as any
   return (
-    <Tag ref={ref as any} className={className}>
+    <Tag
+      ref={ref as any}
+      style={delay ? { animationDelay: `${delay}ms` } : undefined}
+      className={clsx(className)}
+      {...rest}
+    >
       {children}
     </Tag>
   )

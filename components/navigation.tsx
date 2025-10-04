@@ -1,11 +1,23 @@
-"use client"
+'use client'
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Menu, X, Phone } from "lucide-react"
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { Menu, X, Phone } from 'lucide-react'
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+
+  // Smooth-scroll and close the mobile menu
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault()
+    setIsOpen(false)
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      // keep hash in the URL
+      history.pushState(null, '', `#${id}`)
+    }
+  }
 
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50 animate-fade-in">
@@ -20,30 +32,35 @@ export function Navigation() {
             <div className="ml-10 flex items-baseline space-x-8">
               <a
                 href="#home"
+                onClick={(e) => handleNavClick(e, 'home')}
                 className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-200"
               >
                 Home
               </a>
               <a
                 href="#services"
+                onClick={(e) => handleNavClick(e, 'services')}
                 className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-300"
               >
                 Services
               </a>
               <a
                 href="#gallery"
+                onClick={(e) => handleNavClick(e, 'gallery')}
                 className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-400"
               >
                 Gallery
               </a>
               <a
                 href="#about"
+                onClick={(e) => handleNavClick(e, 'about')}
                 className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-500"
               >
                 About
               </a>
               <a
                 href="#contact"
+                onClick={(e) => handleNavClick(e, 'contact')}
                 className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-600"
               >
                 Contact
@@ -64,7 +81,11 @@ export function Navigation() {
 
           {/* Mobile menu button */}
           <div className="md:hidden animate-fade-in-right animate-delay-200">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-foreground hover:text-primary transition-colors">
+            <button
+              onClick={() => setIsOpen((o) => !o)}
+              className="text-foreground hover:text-primary transition-colors"
+              aria-label="Toggle menu"
+            >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
@@ -76,30 +97,35 @@ export function Navigation() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card border-t border-border">
               <a
                 href="#home"
+                onClick={(e) => handleNavClick(e, 'home')}
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-100"
               >
                 Home
               </a>
               <a
                 href="#services"
+                onClick={(e) => handleNavClick(e, 'services')}
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-200"
               >
                 Services
               </a>
               <a
                 href="#gallery"
+                onClick={(e) => handleNavClick(e, 'gallery')}
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-300"
               >
                 Gallery
               </a>
               <a
                 href="#about"
+                onClick={(e) => handleNavClick(e, 'about')}
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-400"
               >
                 About
               </a>
               <a
                 href="#contact"
+                onClick={(e) => handleNavClick(e, 'contact')}
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-500"
               >
                 Contact

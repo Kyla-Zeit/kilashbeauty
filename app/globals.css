@@ -6,6 +6,13 @@
 /* Dark-mode helper (v4) */
 @custom-variant dark (&:is(.dark *));
 
+
+/* Smooth anchor scrolling */
+html { scroll-behavior: smooth; }
+
+/* Apply to each section to compensate sticky header height (≈ 80px) */
+.scroll-mt-header { scroll-margin-top: 80px; }
+
 /* ---------- Design tokens ---------- */
 :root {
   /* Luxury palette */
