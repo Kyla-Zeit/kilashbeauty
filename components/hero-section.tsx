@@ -9,28 +9,40 @@ import { Star, Users, Award } from 'lucide-react'
 export function HeroSection() {
   const bg = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
 
+  // Shared inline styles so we don’t depend on a separate CSS class
+  const baseBg: React.CSSProperties = {
+    backgroundImage: `url(${bg})`,
+    backgroundSize: 'cover',
+    backgroundPosition: '50% 65%',
+  }
+
+  // Blurred ring overlay (only edges/corners show; center stays sharp)
+  const edgeRing: React.CSSProperties = {
+    ...baseBg,
+    filter: 'blur(16px)',                 // blur strength (tweak)
+    WebkitMaskImage:
+      'radial-gradient(closest-side, transparent calc(100% - 56px), #000 100%)',
+    maskImage:
+      'radial-gradient(closest-side, transparent calc(100% - 56px), #000 100%)',
+    WebkitMaskRepeat: 'no-repeat',
+    maskRepeat: 'no-repeat',
+    pointerEvents: 'none',
+  }
+
   return (
     <section
       id="home"
       className="relative overflow-hidden min-h-[calc(100svh-64px)]"
       aria-label="Hero"
     >
-      {/* Soft-edge background wrapper.
-         We set the image once on --hero-bg so both the sharp base and blurred ring can use it. */}
-      <div
-        className="absolute inset-0 soft-edges"
-        style={
-          {
-            // @ts-ignore – custom property
-            '--hero-bg': `url(${bg})`,
-          } as React.CSSProperties
-        }
-      >
-        {/* Sharp base image */}
-        <div className="bg-base" />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/45" />
-      </div>
+      {/* Base image */}
+      <div className="absolute inset-0" style={baseBg} />
+
+      {/* Blurred edges/corners only */}
+      <div className="absolute inset-0" style={edgeRing} />
+
+      {/* Dark overlay for contrast */}
+      <div className="absolute inset-0 bg-black/45" />
 
       {/* Content */}
       <div className="relative z-10 grid h-full place-items-center px-4 sm:px-6 lg:px-8">
@@ -44,8 +56,8 @@ export function HeroSection() {
           </h2>
 
           <p className="mt-6 text-white/90 text-base md:text-lg lg:text-xl max-w-3xl mx-auto animate-fade-up animate-delay-300">
-            Professional, long-lasting eyelash extensions that enhance your natural beauty
-            and boost your confidence.
+            Professional, long-lasting eyelash extensions that enhance your natural
+            beauty and boost your confidence.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 animate-fade-up animate-delay-400">
