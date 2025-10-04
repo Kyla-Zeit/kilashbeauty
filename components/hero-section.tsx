@@ -23,7 +23,7 @@ export function HeroSection() {
           backgroundImage: `url(${bg})`,
           // Move the focal point down to show more of the lower eye/lashes
           // Tweak 55–70% to taste
-          backgroundPosition: '50% 80%',
+          backgroundPosition: '50% 30%',
         }}
       />
 
