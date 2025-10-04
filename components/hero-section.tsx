@@ -7,27 +7,8 @@ import { Button } from '@/components/ui/button'
 import { Star, Users, Award } from 'lucide-react'
 
 export function HeroSection() {
+  // image must exist in /public
   const bg = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
-
-  // Shared inline styles so we don’t depend on a separate CSS class
-  const baseBg: React.CSSProperties = {
-    backgroundImage: `url(${bg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: '50% 30%',
-  }
-
-  // Blurred ring overlay (only edges/corners show; center stays sharp)
-  const edgeRing: React.CSSProperties = {
-    ...baseBg,
-    filter: 'blur(16px)',                 // blur strength (tweak)
-    WebkitMaskImage:
-      'radial-gradient(closest-side, transparent calc(100% - 56px), #000 100%)',
-    maskImage:
-      'radial-gradient(closest-side, transparent calc(100% - 56px), #000 100%)',
-    WebkitMaskRepeat: 'no-repeat',
-    maskRepeat: 'no-repeat',
-    pointerEvents: 'none',
-  }
 
   return (
     <section
@@ -35,14 +16,20 @@ export function HeroSection() {
       className="relative overflow-hidden min-h-[calc(100svh-64px)]"
       aria-label="Hero"
     >
-      {/* Base image */}
-      <div className="absolute inset-0" style={baseBg} />
-
-      {/* Blurred edges/corners only */}
-      <div className="absolute inset-0" style={edgeRing} />
-
-      {/* Dark overlay for contrast */}
-      <div className="absolute inset-0 bg-black/45" />
+      {/* Feathered wrapper — mask applies to BOTH the bg image and the dark overlay */}
+      <div className="absolute inset-0 soft-edges">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover"
+          style={{
+            backgroundImage: `url(${bg})`,
+            // show more of the lower lashes
+            backgroundPosition: '50% 30%',
+          }}
+        />
+        {/* Dark overlay for contrast */}
+        <div className="absolute inset-0 bg-black/45" />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 grid h-full place-items-center px-4 sm:px-6 lg:px-8">
@@ -56,10 +43,11 @@ export function HeroSection() {
           </h2>
 
           <p className="mt-6 text-white/90 text-base md:text-lg lg:text-xl max-w-3xl mx-auto animate-fade-up animate-delay-300">
-            Professional, long-lasting eyelash extensions that enhance your natural
-            beauty and boost your confidence.
+            Professional, long-lasting eyelash extensions that enhance your natural beauty
+            and boost your confidence.
           </p>
 
+          {/* CTAs */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 animate-fade-up animate-delay-400">
             <Link href="#booking" aria-label="Book Your Appointment">
               <Button className="h-12 px-6 text-base md:h-14 md:px-8 md:text-lg font-semibold shadow-lg shadow-fuchsia-700/25">
@@ -77,6 +65,7 @@ export function HeroSection() {
             </Link>
           </div>
 
+          {/* Stats */}
           <div className="mt-10 md:mt-14 grid grid-cols-3 gap-6 sm:gap-8 text-left max-w-3xl mx-auto">
             <div className="flex items-center gap-3 justify-center text-white animate-fade-up animate-delay-400">
               <Star className="h-7 w-7 md:h-8 md:w-8 shrink-0" />
@@ -107,3 +96,4 @@ export function HeroSection() {
     </section>
   )
 }
+
