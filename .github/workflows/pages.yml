@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Next.js to GitHub Pages
 
 on:
   push:
@@ -11,37 +11,23 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
-
-      - name: Install deps
-        run: npm ci
-
-      - name: Build (Next static export)
-        env:
-          NODE_ENV: production
-          NEXT_TELEMETRY_DISABLED: '1'
-        run: |
-          npm run build            # with output:'export', Next writes to ./out
-          touch out/.nojekyll      # keep Jekyll from “helping”
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - run: npm ci
+      - run: npm run build     # Next.js writes the static export to ./out
+      - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./out          # <- upload the out folder
 
   deploy:
     needs: build
@@ -50,6 +36,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
