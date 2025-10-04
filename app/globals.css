@@ -1,5 +1,7 @@
 /* Tailwind v4 entry */
 @import "tailwindcss";
+/* Remove this if the package isn't installed */
+@import "tw-animate-css";
 
 /* Dark-mode helper (v4) */
 @custom-variant dark (&:is(.dark *));
