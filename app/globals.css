@@ -192,19 +192,49 @@
   .hover-lift { transition: transform .3s ease, box-shadow .3s ease; }
   .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / .1), 0 10px 10px -5px rgb(0 0 0 / .04); }
 }
-/* Softly feather the edges of whatever is inside the element */
-.soft-edges {
-  /* Center-out radial mask: opaque in the middle, transparent at the edges */
-  -webkit-mask-image: radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 98%);
-          mask-image: radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 98%);
+/* ===== Soft edge ring blur (only corners/edges) ===== */
+.soft-edges { 
+  --edge-feather: 56px;              /* thickness of the blurred ring (tweak) */
+  --edge-blur: 16px;                 /* blur strength (tweak) */
+  position: relative;
+  isolation: isolate;                /* keep the pseudo above only this context */
+}
+
+/* Sharp base image uses the same --hero-bg once */
+.soft-edges .bg-base {
+  position: absolute;
+  inset: 0;
+  background-image: var(--hero-bg);
+  background-size: cover;
+  background-position: 50% 65%;
+}
+
+/* Blurred ring near the borders (not the center) */
+.soft-edges::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--hero-bg);
+  background-size: cover;
+  background-position: 50% 65%;
+  filter: blur(var(--edge-blur));
+  /* Show ONLY a ring near the edges: transparent center -> visible edges */
+  -webkit-mask-image: radial-gradient(
+    closest-side,
+    transparent calc(100% - var(--edge-feather)),
+    #000 100%
+  );
+          mask-image: radial-gradient(
+    closest-side,
+    transparent calc(100% - var(--edge-feather)),
+    #000 100%
+  );
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
 }
 
-/* Optional: tune feather strength per breakpoint */
+/* Optional: scale ring on large screens */
 @media (min-width: 1024px) {
-  .soft-edges {
-    -webkit-mask-image: radial-gradient(140% 140% at 50% 50%, #000 64%, transparent 98%);
-            mask-image: radial-gradient(140% 140% at 50% 50%, #000 64%, transparent 98%);
-  }
+  .soft-edges { --edge-feather: 64px; --edge-blur: 18px; }
 }

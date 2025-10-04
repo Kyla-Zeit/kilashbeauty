@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button'
 import { Star, Users, Award } from 'lucide-react'
 
 export function HeroSection() {
-  // image must exist in /public
   const bg = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
 
   return (
@@ -16,18 +15,20 @@ export function HeroSection() {
       className="relative overflow-hidden min-h-[calc(100svh-64px)]"
       aria-label="Hero"
     >
-      {/* Feathered wrapper — mask applies to BOTH the bg image and the dark overlay */}
-      <div className="absolute inset-0 soft-edges">
-        {/* Background image */}
-        <div
-          className="absolute inset-0 bg-cover"
-          style={{
-            backgroundImage: `url(${bg})`,
-            // show more of the lower lashes
-            backgroundPosition: '50% 30%',
-          }}
-        />
-        {/* Dark overlay for contrast */}
+      {/* Soft-edge background wrapper.
+         We set the image once on --hero-bg so both the sharp base and blurred ring can use it. */}
+      <div
+        className="absolute inset-0 soft-edges"
+        style={
+          {
+            // @ts-ignore – custom property
+            '--hero-bg': `url(${bg})`,
+          } as React.CSSProperties
+        }
+      >
+        {/* Sharp base image */}
+        <div className="bg-base" />
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/45" />
       </div>
 
@@ -47,7 +48,6 @@ export function HeroSection() {
             and boost your confidence.
           </p>
 
-          {/* CTAs */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 animate-fade-up animate-delay-400">
             <Link href="#booking" aria-label="Book Your Appointment">
               <Button className="h-12 px-6 text-base md:h-14 md:px-8 md:text-lg font-semibold shadow-lg shadow-fuchsia-700/25">
@@ -65,7 +65,6 @@ export function HeroSection() {
             </Link>
           </div>
 
-          {/* Stats */}
           <div className="mt-10 md:mt-14 grid grid-cols-3 gap-6 sm:gap-8 text-left max-w-3xl mx-auto">
             <div className="flex items-center gap-3 justify-center text-white animate-fade-up animate-delay-400">
               <Star className="h-7 w-7 md:h-8 md:w-8 shrink-0" />
