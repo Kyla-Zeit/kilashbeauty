@@ -5,7 +5,7 @@ import { Star, Users, Award } from 'lucide-react'
 import { withBase } from '@/lib/basePath'
 import React from 'react'
 
-export default function HeroSection() {
+export function HeroSection() {
   // Background image (served from /public); withBase adds the repo base path for GitHub Pages
   const bg = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
 
