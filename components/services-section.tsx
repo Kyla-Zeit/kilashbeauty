@@ -1,48 +1,43 @@
-'use client'
+// components/services-section.tsx
 import Reveal from '@/components/Reveal'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Clock, Eye, Sparkles, Heart, Scissors, ShieldCheck } from "lucide-react"
+import { Eye, Sparkles, Scissors } from 'lucide-react'
 
-export function ServicesSection() {
-  const services = [
+type Service = {
+  title: string
+  desc: string
+  price: string
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  delay: number
+}
+
+const services: Service[] = [
   {
-    icon: Eye,
-    title: "Classic Lashes",
-    description: "Natural-looking extensions with one lash applied to each natural lash for subtle enhancement.",
-    duration: "2-2.5 hours",
-    price: "From $120",
-    features: ["Natural look", "Perfect for beginners", "Low maintenance", "Lasts 4-6 weeks"],
+    title: 'Classic Set',
+    desc: 'Natural, lightweight extensions that enhance your everyday look.',
+    price: '$120',
+    Icon: Eye,
+    delay: 0,
+  },
+  {
+    title: 'Hybrid Set',
+    desc: 'A perfect blend of classic + volume for a soft, wispy finish.',
+    price: '$160',
     Icon: Sparkles,
-      delay: 0 as const,
+    delay: 100,
   },
   {
-    icon: Sparkles,
-    title: "Volume Lashes",
-    description: "Multiple lightweight lashes applied to each natural lash for dramatic, full coverage.",
-    duration: "2.5-3 hours",
-    price: "From $180",
-    features: ["Dramatic volume", "Customizable fullness", "Lightweight feel", "Lasts 4-6 weeks"],
-    popular: true,
- Icon: ShieldCheck,
-      delay: 200 as const,
-  },
-  {
-    icon: Heart,
-    title: "Hybrid Lashes",
-    description: "Perfect blend of classic and volume techniques for textured, natural-looking fullness.",
-    duration: "2.5 hours",
-    price: "From $150",
-    features: ["Best of both worlds", "Textured appearance", "Versatile styling", "Lasts 4-6 weeks"],
-       Icon: Scissors,
-      delay: 100 as const,
+    title: 'Volume Set',
+    desc: 'Full, fluffy fans for maximum drama and lux finish.',
+    price: '$200',
+    Icon: Scissors,
+    delay: 200,
   },
 ]
 
- return (
-    <section id="services" className="py-20 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4">
+export function ServicesSection() {
+  return (
+    <section id="services" className="relative py-20 sm:py-24 lg:py-28">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <Reveal animation="fade-up">
           <h2 className="text-3xl md:text-4xl font-bold text-center">
@@ -67,16 +62,17 @@ export function ServicesSection() {
                 <Icon className="h-6 w-6 text-purple-500" />
                 <h3 className="text-xl font-semibold">{title}</h3>
               </div>
+
               <p className="mt-3 text-sm text-muted-foreground">{desc}</p>
-              <div className="mt-5 text-lg font-semibold">{price}</div>
+              <p className="mt-5 text-lg font-semibold">{price}</p>
             </Reveal>
           ))}
         </div>
 
-        {/* Footer blurb */}
-        <Reveal className="mt-10 text-center" animation="fade-up" delay={200}>
-          <p className="text-sm text-muted-foreground">
-            Patch test available upon request. Refills recommended every 2–3 weeks.
+        {/* Footer blurb (optional) */}
+        <Reveal animation="fade-up" delay={250}>
+          <p className="mt-10 text-center text-sm text-muted-foreground">
+            Not sure what to book? We’ll help you choose the perfect set during your consultation.
           </p>
         </Reveal>
       </div>
