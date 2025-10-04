@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "deploy": "echo Deploy is handled by GitHub Actions"
+    "build": "next build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
