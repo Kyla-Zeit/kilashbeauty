@@ -207,8 +207,7 @@
 
 /* Intensity helpers (pick one) */
 .edge-feather-sm { --fade: 48px; }   /* subtle (recommended) */
-.edge-feather-md { --fade: 80px; }   /* medium */
-.edge-feather-lg { --fade: 120px; }  /* strong */
+
 
 /* Safari fallback (no mask-composite) */
 .edge-feather--fallback::after {
