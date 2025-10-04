@@ -16,7 +16,7 @@ export function HeroSection() {
       aria-label="Hero"
     >
       {/* Feathered wrapper – applies to BG + overlay */}
-      <div className="absolute inset-0 edge-feather edge-feather--fallback">
+      <div className="absolute inset-0 edge-feather edge-feather-sm edge-feather--fallback">
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover"
