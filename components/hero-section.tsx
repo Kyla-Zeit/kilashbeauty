@@ -13,7 +13,7 @@ export function HeroSection() {
   const baseBg: React.CSSProperties = {
     backgroundImage: `url(${bg})`,
     backgroundSize: 'cover',
-    backgroundPosition: '50% 65%',
+    backgroundPosition: '50% 30%',
   }
 
   // Blurred ring overlay (only edges/corners show; center stays sharp)
