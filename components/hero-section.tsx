@@ -1,4 +1,3 @@
-// components/hero-section.tsx
 'use client'
 
 import Link from 'next/link'
@@ -7,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Star, Users, Award } from 'lucide-react'
 
 export function HeroSection() {
-  // image must exist in /public
+  // Make sure this file lives in /public
   const bg = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
 
   return (
@@ -16,15 +15,15 @@ export function HeroSection() {
       className="relative overflow-hidden min-h-[calc(100svh-64px)]"
       aria-label="Hero"
     >
-      {/* Feathered wrapper — mask applies to BOTH the bg image and the dark overlay */}
-      <div className="absolute inset-0 soft-edges">
+      {/* Feathered wrapper – applies to BG + overlay */}
+      <div className="absolute inset-0 edge-feather edge-feather--fallback">
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover"
           style={{
             backgroundImage: `url(${bg})`,
-            // show more of the lower lashes
-            backgroundPosition: '50% 30%',
+            /* show more of the lower lashes */
+            backgroundPosition: '50% 65%',
           }}
         />
         {/* Dark overlay for contrast */}
@@ -96,4 +95,3 @@ export function HeroSection() {
     </section>
   )
 }
-

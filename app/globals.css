@@ -1,12 +1,12 @@
 /* Tailwind v4 entry */
 @import "tailwindcss";
-/* Remove this if the package isn't installed */
+/* Remove this if you didn't install it */
 @import "tw-animate-css";
 
 /* Dark-mode helper (v4) */
 @custom-variant dark (&:is(.dark *));
 
-/* ---- Design tokens ---- */
+/* ---------- Design tokens ---------- */
 :root {
   /* Luxury palette */
   --background: oklch(1 0 0);
@@ -43,7 +43,7 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
 
-  --radius: 0.5rem;
+  --radius: .5rem;
 
   /* sidebar variants */
   --sidebar: oklch(0.98 0.01 340);
@@ -90,15 +90,6 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
 }
 
 /* Map tokens to Tailwind v4 theme vars */
@@ -144,24 +135,15 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* Base tweaks */
+/* ---------- Base tweaks ---------- */
 @layer base {
   * { @apply border-border outline-ring/50; }
   body { @apply bg-background text-foreground; }
 }
 
-/* ---- Animation utilities (merged) ---- */
+/* ---------- Animation utilities ---------- */
 @layer utilities {
   /* Keyframes */
   @keyframes fadeUp       { from {opacity:0; transform:translateY(30px)} to {opacity:1; transform:translateY(0)} }
@@ -187,25 +169,54 @@
   .animate-delay-700 { animation-delay:.7s }
 
   /* Helpers */
-  .animate-on-scroll { opacity: 0; }         /* optional: if you add an intersection-observer later */
+  .animate-on-scroll { opacity: 0; }
   .transition-all-smooth { transition: all .3s cubic-bezier(.4,0,.2,1); }
   .hover-lift { transition: transform .3s ease, box-shadow .3s ease; }
   .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / .1), 0 10px 10px -5px rgb(0 0 0 / .04); }
 }
-/* Softly feather the edges of the element’s content */
-.soft-edges{
-  /* center stays fully visible (#fff), edges fade to transparent */
-  -webkit-mask-image: radial-gradient(120% 120% at 50% 50%, #fff 64%, transparent 98%);
-          mask-image: radial-gradient(120% 120% at 50% 50%, #fff 64%, transparent 98%);
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-mode: alpha;
-          mask-mode: alpha;
+
+/* ---------- EDGE FEATHER (corners/edges soften) ---------- */
+/* Mask-based feather (modern browsers) */
+.edge-feather {
+  --fade: 110px; /* tweak 60–160px */
+  -webkit-mask-image:
+    linear-gradient(to right,
+      transparent 0,
+      #000 var(--fade),
+      #000 calc(100% - var(--fade)),
+      transparent 100%),
+    linear-gradient(to bottom,
+      transparent 0,
+      #000 var(--fade),
+      #000 calc(100% - var(--fade)),
+      transparent 100%);
+  -webkit-mask-composite: source-in; /* Chrome/Edge */
+          mask-image:
+    linear-gradient(to right,
+      transparent 0,
+      #000 var(--fade),
+      #000 calc(100% - var(--fade)),
+      transparent 100%),
+    linear-gradient(to bottom,
+      transparent 0,
+      #000 var(--fade),
+      #000 calc(100% - var(--fade)),
+      transparent 100%);
+          mask-composite: intersect;   /* Firefox */
 }
 
-@media (min-width:1024px){
-  .soft-edges{
-    -webkit-mask-image: radial-gradient(140% 140% at 50% 50%, #fff 66%, transparent 98%);
-            mask-image: radial-gradient(140% 140% at 50% 50%, #fff 66%, transparent 98%);
-  }
+/* Safari (no mask-composite): overlay subtle gradients */
+.edge-feather--fallback::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  --fade: 110px;                  /* keep in sync with .edge-feather */
+  --bg: var(--background, #fff);  /* page background */
+  background:
+    linear-gradient(to right, var(--bg) 0, rgba(255,255,255,0) var(--fade)),
+    linear-gradient(to left,  var(--bg) 0, rgba(255,255,255,0) var(--fade)),
+    linear-gradient(to bottom,var(--bg) 0, rgba(255,255,255,0) var(--fade)),
+    linear-gradient(to top,   var(--bg) 0, rgba(255,255,255,0) var(--fade));
+  opacity: .65; /* feel: .45–.75 */
 }
