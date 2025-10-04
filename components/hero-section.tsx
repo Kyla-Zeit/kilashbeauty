@@ -12,7 +12,8 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden min-h-[calc(92svh-64px)]"
+      // ↓ was min-h-[calc(100svh-64px)] — reduce vh to zoom out the bg while keeping bg-cover
+      className="relative overflow-hidden min-h-[calc(90svh-64px)]"
       aria-label="Hero"
     >
       {/* Feathered wrapper – applies to BG + overlay */}
@@ -20,9 +21,10 @@ export function HeroSection() {
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover"
-    style={{
-      backgroundImage: `url(${bg})`,
-      backgroundPosition: '50% 30%',
+          style={{
+            backgroundImage: `url(${bg})`,
+            // ↓ was '50% 30%' — nudge a bit lower to reveal more image
+            backgroundPosition: '50% 35%',
           }}
         />
         {/* Dark overlay for contrast */}
