@@ -23,9 +23,7 @@ export function HeroSection() {
           style={{
             backgroundImage: `url(${bg})`,
             backgroundPosition: '50% 30%',
-            // ↓↓↓ Zoom OUT by using a percentage. Smaller % shows more of the photo.
-            // Try 95%, 92%, 90% etc.
-            backgroundSize: '92%',
+            backgroundSize: 'cover',      // ← fill the box (no side bars)
             backgroundRepeat: 'no-repeat',
           }}
         />
