@@ -51,7 +51,7 @@ export function GallerySection() {
     activeCategory === "all" ? galleryImages : galleryImages.filter((img) => img.category === activeCategory)
 
   return (
-    <section id="gallery" className="py-20">
+    <section id="gallery" className="py-20 bg-muted/30 scroll-mt-24 md:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-up">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Beautiful Work</h2>
