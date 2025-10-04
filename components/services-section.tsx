@@ -1,80 +1,103 @@
-// components/services-section.tsx
+'use client'
+
 import Reveal from '@/components/Reveal'
-import { Eye, Sparkles, Scissors } from 'lucide-react'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Clock, Eye, Sparkles, Heart } from "lucide-react"
 
-type Service = {
-  title: string
-  desc: string
-  price: string
-  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
-  delay: number
-}
-
-const services: Service[] = [
+const services = [
   {
-    title: 'Classic Set',
-    desc: 'Natural, lightweight extensions that enhance your everyday look.',
-    price: '$120',
-    Icon: Eye,
-    delay: 0,
+    icon: Eye,
+    title: "Classic Lashes",
+    description: "Natural-looking extensions with one lash applied to each natural lash for subtle enhancement.",
+    duration: "2-2.5 hours",
+    price: "From $120",
+    features: ["Natural look", "Perfect for beginners", "Low maintenance", "Lasts 4-6 weeks"],
   },
   {
-    title: 'Hybrid Set',
-    desc: 'A perfect blend of classic + volume for a soft, wispy finish.',
-    price: '$160',
-    Icon: Sparkles,
-    delay: 100,
+    icon: Sparkles,
+    title: "Volume Lashes",
+    description: "Multiple lightweight lashes applied to each natural lash for dramatic, full coverage.",
+    duration: "2.5-3 hours",
+    price: "From $180",
+    features: ["Dramatic volume", "Customizable fullness", "Lightweight feel", "Lasts 4-6 weeks"],
+    popular: true,
   },
   {
-    title: 'Volume Set',
-    desc: 'Full, fluffy fans for maximum drama and lux finish.',
-    price: '$200',
-    Icon: Scissors,
-    delay: 200,
+    icon: Heart,
+    title: "Hybrid Lashes",
+    description: "Perfect blend of classic and volume techniques for textured, natural-looking fullness.",
+    duration: "2.5 hours",
+    price: "From $150",
+    features: ["Best of both worlds", "Textured appearance", "Versatile styling", "Lasts 4-6 weeks"],
   },
 ]
 
 export function ServicesSection() {
   return (
-    <section id="services" className="relative py-20 sm:py-24 lg:py-28">
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
-        <Reveal animation="fade-up">
-          <h2 className="text-3xl md:text-4xl font-bold text-center">
-            Our Lash Services
-          </h2>
-          <p className="mt-3 text-center text-muted-foreground max-w-2xl mx-auto">
-            Customized lash sets that enhance your natural beauty—long-lasting, lightweight, and comfortable.
+    <section id="services" className="py-20 bg-muted/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16 animate-fade-up">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Premium Services</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
+            Choose from our range of professional eyelash extension services, each tailored to enhance your unique
+            beauty.
           </p>
-        </Reveal>
+        </div>
 
-        {/* Cards */}
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {services.map(({ title, desc, price, Icon, delay }) => (
-            <Reveal
-              key={title}
-              className="rounded-2xl bg-white/90 backdrop-blur p-6 shadow-lg hover-lift border border-border"
-              animation="fade-up"
-              delay={delay}
-              threshold={0.15}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <Card
+              key={index}
+              className={`relative overflow-hidden hover:shadow-lg transition-all duration-500 hover-lift animate-fade-up animate-delay-${(index + 2) * 100}`}
             >
-              <div className="flex items-center gap-3">
-                <Icon className="h-6 w-6 text-purple-500" />
-                <h3 className="text-xl font-semibold">{title}</h3>
-              </div>
+              {service.popular && (
+                <Badge className="absolute top-4 right-4 bg-secondary text-secondary-foreground animate-scale-in animate-delay-600">
+                  Most Popular
+                </Badge>
+              )}
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center transition-all-smooth hover:bg-primary/20 hover:scale-110">
+                  <service.icon className="w-8 h-8 text-primary" />
+                </div>
+                <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
+                <CardDescription className="text-pretty">{service.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex justify-between items-center text-sm">
+                  <div className="flex items-center text-muted-foreground">
+                    <Clock className="w-4 h-4 mr-1" />
+                    {service.duration}
+                  </div>
+                  <div className="text-lg font-semibold text-primary">{service.price}</div>
+                </div>
 
-              <p className="mt-3 text-sm text-muted-foreground">{desc}</p>
-              <p className="mt-5 text-lg font-semibold">{price}</p>
-            </Reveal>
+                <ul className="space-y-2">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0"></div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <Button className="w-full mt-6 hover-lift" variant={service.popular ? "default" : "outline"}>
+                  Book {service.title}
+                </Button>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
-        {/* Footer blurb (optional) */}
-        <Reveal animation="fade-up" delay={250}>
-          <p className="mt-10 text-center text-sm text-muted-foreground">
-            Not sure what to book? We’ll help you choose the perfect set during your consultation.
+        <div className="text-center mt-12 animate-fade-up animate-delay-600">
+          <p className="text-muted-foreground mb-4">
+            All services include complimentary consultation and aftercare instructions
           </p>
-        </Reveal>
+          <Button variant="outline" size="lg" className="hover-lift bg-transparent">
+            View Full Price List
+          </Button>
+        </div>
       </div>
     </section>
   )
