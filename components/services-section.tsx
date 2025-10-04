@@ -1,9 +1,12 @@
+'use client'
+import Reveal from '@/components/Reveal'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Clock, Eye, Sparkles, Heart } from "lucide-react"
+import { Clock, Eye, Sparkles, Heart, Scissors, ShieldCheck } from "lucide-react"
 
-const services = [
+export function ServicesSection() {
+  const services = [
   {
     icon: Eye,
     title: "Classic Lashes",
@@ -11,6 +14,8 @@ const services = [
     duration: "2-2.5 hours",
     price: "From $120",
     features: ["Natural look", "Perfect for beginners", "Low maintenance", "Lasts 4-6 weeks"],
+    Icon: Sparkles,
+      delay: 0 as const,
   },
   {
     icon: Sparkles,
@@ -20,6 +25,8 @@ const services = [
     price: "From $180",
     features: ["Dramatic volume", "Customizable fullness", "Lightweight feel", "Lasts 4-6 weeks"],
     popular: true,
+ Icon: ShieldCheck,
+      delay: 200 as const,
   },
   {
     icon: Heart,
@@ -28,73 +35,50 @@ const services = [
     duration: "2.5 hours",
     price: "From $150",
     features: ["Best of both worlds", "Textured appearance", "Versatile styling", "Lasts 4-6 weeks"],
+       Icon: Scissors,
+      delay: 100 as const,
   },
 ]
 
-export function ServicesSection() {
-  return (
-    <section id="services" className="py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-up">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Premium Services</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Choose from our range of professional eyelash extension services, each tailored to enhance your unique
-            beauty.
+ return (
+    <section id="services" className="py-20 sm:py-24">
+      <div className="mx-auto max-w-6xl px-4">
+        {/* Heading */}
+        <Reveal animation="fade-up">
+          <h2 className="text-3xl md:text-4xl font-bold text-center">
+            Our Lash Services
+          </h2>
+          <p className="mt-3 text-center text-muted-foreground max-w-2xl mx-auto">
+            Customized lash sets that enhance your natural beauty—long-lasting, lightweight, and comfortable.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <Card
-              key={index}
-              className={`relative overflow-hidden hover:shadow-lg transition-all duration-500 hover-lift animate-fade-up animate-delay-${(index + 2) * 100}`}
+        {/* Cards */}
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {services.map(({ title, desc, price, Icon, delay }) => (
+            <Reveal
+              key={title}
+              className="rounded-2xl bg-white/90 backdrop-blur p-6 shadow-lg hover-lift border border-border"
+              animation="fade-up"
+              delay={delay}
+              threshold={0.15}
             >
-              {service.popular && (
-                <Badge className="absolute top-4 right-4 bg-secondary text-secondary-foreground animate-scale-in animate-delay-600">
-                  Most Popular
-                </Badge>
-              )}
-              <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center transition-all-smooth hover:bg-primary/20 hover:scale-110">
-                  <service.icon className="w-8 h-8 text-primary" />
-                </div>
-                <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
-                <CardDescription className="text-pretty">{service.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex justify-between items-center text-sm">
-                  <div className="flex items-center text-muted-foreground">
-                    <Clock className="w-4 h-4 mr-1" />
-                    {service.duration}
-                  </div>
-                  <div className="text-lg font-semibold text-primary">{service.price}</div>
-                </div>
-
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <Button className="w-full mt-6 hover-lift" variant={service.popular ? "default" : "outline"}>
-                  Book {service.title}
-                </Button>
-              </CardContent>
-            </Card>
+              <div className="flex items-center gap-3">
+                <Icon className="h-6 w-6 text-purple-500" />
+                <h3 className="text-xl font-semibold">{title}</h3>
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">{desc}</p>
+              <div className="mt-5 text-lg font-semibold">{price}</div>
+            </Reveal>
           ))}
         </div>
 
-        <div className="text-center mt-12 animate-fade-up animate-delay-600">
-          <p className="text-muted-foreground mb-4">
-            All services include complimentary consultation and aftercare instructions
+        {/* Footer blurb */}
+        <Reveal className="mt-10 text-center" animation="fade-up" delay={200}>
+          <p className="text-sm text-muted-foreground">
+            Patch test available upon request. Refills recommended every 2–3 weeks.
           </p>
-          <Button variant="outline" size="lg" className="hover-lift bg-transparent">
-            View Full Price List
-          </Button>
-        </div>
+        </Reveal>
       </div>
     </section>
   )
