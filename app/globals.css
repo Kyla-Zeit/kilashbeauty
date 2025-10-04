@@ -206,7 +206,7 @@
 }
 
 /* Intensity helpers (pick one) */
-.edge-feather-sm { --fade: 48px; }   /* subtle (recommended) */
+.edge-feather-sm { --fade: 20px; }   /* subtle (recommended) */
 
 
 /* Safari fallback (no mask-composite) */
