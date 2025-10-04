@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Star, Users, Award } from 'lucide-react'
 import Link from 'next/link'
 
-export default function HeroSection() {
+export function HeroSection() {
   // Change this filename to any image you’ve placed in /public
   const bg = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
 
