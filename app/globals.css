@@ -192,19 +192,20 @@
   .hover-lift { transition: transform .3s ease, box-shadow .3s ease; }
   .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / .1), 0 10px 10px -5px rgb(0 0 0 / .04); }
 }
-/* Softly feather the edges of whatever is inside the element */
-.soft-edges {
-  /* Center-out radial mask: opaque in the middle, transparent at the edges */
-  -webkit-mask-image: radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 98%);
-          mask-image: radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 98%);
+/* Softly feather the edges of the element’s content */
+.soft-edges{
+  /* center stays fully visible (#fff), edges fade to transparent */
+  -webkit-mask-image: radial-gradient(120% 120% at 50% 50%, #fff 64%, transparent 98%);
+          mask-image: radial-gradient(120% 120% at 50% 50%, #fff 64%, transparent 98%);
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
+  -webkit-mask-mode: alpha;
+          mask-mode: alpha;
 }
 
-/* Optional: tune feather strength per breakpoint */
-@media (min-width: 1024px) {
-  .soft-edges {
-    -webkit-mask-image: radial-gradient(140% 140% at 50% 50%, #000 64%, transparent 98%);
-            mask-image: radial-gradient(140% 140% at 50% 50%, #000 64%, transparent 98%);
+@media (min-width:1024px){
+  .soft-edges{
+    -webkit-mask-image: radial-gradient(140% 140% at 50% 50%, #fff 66%, transparent 98%);
+            mask-image: radial-gradient(140% 140% at 50% 50%, #fff 66%, transparent 98%);
   }
 }
