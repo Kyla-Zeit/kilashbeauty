@@ -135,16 +135,9 @@
 }
 
 /* Base class */
-.animate-fade-up { 
-  animation: fade-up .7s ease-out both; 
-  will-change: transform, opacity;
-}
-.animate-fade-in { 
-  animation: fade-in .7s ease-out both; 
-  will-change: opacity;
-}
+.animate-fade-up { animation: fade-up .7s ease-out both; will-change: transform, opacity; }
+.animate-fade-in { animation: fade-in  .7s ease-out both; will-change: opacity; }
 
-/* Stagger helpers */
 .animate-delay-100 { animation-delay: .1s; }
 .animate-delay-200 { animation-delay: .2s; }
 .animate-delay-300 { animation-delay: .3s; }
