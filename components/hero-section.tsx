@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button'
 import { Star, Users, Award } from 'lucide-react'
 
 export function HeroSection() {
-  // image lives in /public
   const bg = withBase('/beautiful-woman-with-stunning-eyelash-extensions-c.jpg')
 
   return (
@@ -16,20 +15,41 @@ export function HeroSection() {
       aria-label="Hero"
       className="relative overflow-hidden min-h-[calc(100svh-64px)]"
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center animate-scale-in"
-        style={{
-          backgroundImage: `url(${bg})`,
-          // show more lower lashes
-          backgroundPosition: '50% 30%',
-        }}
-      />
+      {/* --- Background stack --- */}
+      <div className="absolute inset-0">
+        {/* Sharp base image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center animate-scale-in"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundPosition: '50% 30%',
+          }}
+        />
 
-      {/* Dark overlay for contrast */}
+        {/* Blurred edges – masked so only the perimeter shows */}
+        <div
+          className="absolute inset-0 bg-cover bg-center animate-fade-in"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundPosition: '50% 65%',
+            filter: 'blur(12px)',
+            transform: 'scale(1.02)',
+            // Show blur mostly at the edges; hide the center
+            WebkitMaskImage:
+              'radial-gradient(circle at center, rgba(0,0,0,0) 56%, rgba(0,0,0,1) 78%)',
+            maskImage:
+              'radial-gradient(circle at center, rgba(0,0,0,0) 56%, rgba(0,0,0,1) 78%)',
+          }}
+        />
+
+        {/* Optional vignette to gently darken corners */}
+        <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_160px_rgba(0,0,0,0.35)]" />
+      </div>
+
+      {/* Dark overlay for text contrast */}
       <div className="absolute inset-0 bg-black/45 animate-fade-in animate-delay-200" />
 
-      {/* Content */}
+      {/* --- Content --- */}
       <div className="relative z-10 grid h-full place-items-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl w-full text-center py-16 md:py-20 lg:py-24">
           <h1 className="text-white font-bold leading-tight text-4xl md:text-5xl lg:text-6xl animate-fade-up animate-delay-100">
