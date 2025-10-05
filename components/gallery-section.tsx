@@ -75,7 +75,7 @@ export function GallerySection() {
             <Reveal
               key={category.id}
               animation="animate-fade-up"
-              delay={(index + 3) * 100} // keep same visual cadence
+              delay={(index + 3) * 80} // keep same visual cadence
               threshold={0.15}
               rootMargin="0px 0px -10% 0px"
             >
@@ -96,7 +96,7 @@ export function GallerySection() {
             <Reveal
               key={`${image.src}-${index}`}
               animation="animate-scale-in"
-              delay={((index % 6) + 1) * 100}
+              delay={((index % 6) + 1) * 80}
               threshold={0.12}
               rootMargin="0px 0px -10% 0px"
             >
@@ -119,7 +119,7 @@ export function GallerySection() {
         </div>
 
         {/* CTA (on-scroll) */}
-        <Reveal animation="animate-fade-up" delay={600}>
+        <Reveal animation="animate-fade-up" delay={480}>
           <div className="text-center mt-12">
             <Button variant="outline" size="lg" className="hover-lift bg-transparent">
               View More on Instagram

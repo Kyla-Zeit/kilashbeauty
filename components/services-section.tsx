@@ -66,7 +66,7 @@ export function ServicesSection() {
             <Reveal
               key={service.title}
               animation="animate-fade-up"
-              delay={(index + 2) * 100} // 200ms, 300ms, 400ms
+              delay={(index + 2) * 80} // 200ms, 300ms, 400ms
               threshold={0.18}
               rootMargin="0px 0px -10% 0px"
             >
@@ -121,7 +121,7 @@ export function ServicesSection() {
         </div>
 
         {/* Footer blurb + button (on-scroll) */}
-        <Reveal animation="animate-fade-up" delay={600}>
+        <Reveal animation="animate-fade-up" delay={480}>
           <div className="text-center mt-12">
             <p className="text-muted-foreground mb-4">
               All services include complimentary consultation and aftercare instructions
