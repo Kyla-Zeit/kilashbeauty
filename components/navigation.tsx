@@ -30,38 +30,33 @@ export function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a
-                href="#home"
-                onClick={(e) => handleNavClick(e, 'home')}
-                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-200"
-              >
-                Home
-              </a>
+              {/* Home removed */}
               <a
                 href="#services"
                 onClick={(e) => handleNavClick(e, 'services')}
-                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-300"
+                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-200"
               >
                 Services
               </a>
               <a
                 href="#gallery"
                 onClick={(e) => handleNavClick(e, 'gallery')}
-                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-400"
+                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-300"
               >
                 Gallery
               </a>
+              {/* About -> Testimonials */}
               <a
-                href="#about"
-                onClick={(e) => handleNavClick(e, 'about')}
-                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-500"
+                href="#testimonials"
+                onClick={(e) => handleNavClick(e, 'testimonials')}
+                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-400"
               >
-                About
+                Testimonials
               </a>
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, 'contact')}
-                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-600"
+                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-500"
               >
                 Contact
               </a>
@@ -95,42 +90,37 @@ export function Navigation() {
         {isOpen && (
           <div className="md:hidden animate-fade-up animate-delay-100">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card border-t border-border">
-              <a
-                href="#home"
-                onClick={(e) => handleNavClick(e, 'home')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-100"
-              >
-                Home
-              </a>
+              {/* Home removed */}
               <a
                 href="#services"
                 onClick={(e) => handleNavClick(e, 'services')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-200"
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-100"
               >
                 Services
               </a>
               <a
                 href="#gallery"
                 onClick={(e) => handleNavClick(e, 'gallery')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-300"
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-200"
               >
                 Gallery
               </a>
+              {/* About -> Testimonials */}
               <a
-                href="#about"
-                onClick={(e) => handleNavClick(e, 'about')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-400"
+                href="#testimonials"
+                onClick={(e) => handleNavClick(e, 'testimonials')}
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-300"
               >
-                About
+                Testimonials
               </a>
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, 'contact')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-500"
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-400"
               >
                 Contact
               </a>
-              <div className="px-3 py-2 animate-fade-in animate-delay-600">
+              <div className="px-3 py-2 animate-fade-in animate-delay-500">
                 <Button className="w-full hover-lift">Book Now</Button>
               </div>
             </div>
