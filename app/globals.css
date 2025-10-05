@@ -19,6 +19,11 @@ html { scroll-behavior: smooth; }
   --brand-from: #3B82F6;  /* blue-500  */
   --brand-mid:  #8B5CF6;  /* violet-600 */
   --brand-to:   #EC4899;  /* pink-500  */
+    /* brand pink used on hover */
+  --kb-pink: #EC6AD9; /* matches the logo gradient’s pink */
+
+  .dark {
+  --kb-pink: #EC6AD9;
 
   /* Site surface on the light side (no heavy black) */
   --background: #FFFFFF;
@@ -221,4 +226,5 @@ html { scroll-behavior: smooth; }
   pointer-events: none;
   background: linear-gradient(to bottom, rgba(255,255,255,0), var(--background, #fff));
   opacity: .45; /* lower if you want even softer */
+}
 }
