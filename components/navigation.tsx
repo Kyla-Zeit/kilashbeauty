@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Phone } from "lucide-react"
 import { withBase } from "@/lib/basePath"
+import BrandLogo from '@/components/brand-logo'
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
