@@ -23,12 +23,12 @@ Designed for clean visuals, smooth section-based navigation, and classy on-scrol
 
 kilashbeauty/
 ├─ app/
-│ ├─ layout.tsx # Root layout (fonts, providers, global CSS)
-│ ├─ page.tsx # Homepage (assembles all sections)
-│ └─ globals.css # Tailwind v4 + design tokens + utilities
+│ ├─ layout.tsx  # Root layout (fonts, providers, global CSS)
+│ ├─ page.tsx  # Homepage (assembles all sections)
+│ └─ globals.css  # Tailwind v4 + design tokens + utilities
 ├─ components/
-│ ├─ Reveal.tsx # IntersectionObserver reveal wrapper
-│ ├─ navigation.tsx # Sticky navbar (smooth-scroll links)
+│ ├─ Reveal.tsx  # IntersectionObserver reveal wrapper
+│ ├─ navigation.tsx  # Sticky navbar (smooth-scroll links)
 │ ├─ hero-section.tsx # Hero with feathered background
 │ ├─ services-section.tsx # Services cards
 │ ├─ gallery-section.tsx # Filterable image gallery
