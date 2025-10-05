@@ -21,10 +21,10 @@ Designed for clean visuals, smooth section-based navigation, and classy on-scrol
 
 ## 📂 Project Structure
 
-*kilashbeauty/
-*├─ app/
-*│ ├─ layout.tsx  # Root layout (fonts, providers, global CSS)
-*│ ├─ page.tsx  # Homepage (assembles all sections)
+kilashbeauty/
+├─ app/
+│ ├─ layout.tsx  # Root layout (fonts, providers, global CSS)
+│ ├─ page.tsx  # Homepage (assembles all sections)
 │ └─ globals.css  # Tailwind v4 + design tokens + utilities
 ├─ components/
 │ ├─ Reveal.tsx  # IntersectionObserver reveal wrapper
@@ -48,6 +48,7 @@ Designed for clean visuals, smooth section-based navigation, and classy on-scrol
 ├─ package.json
 └─ README.md
 
+---
 
 ## 🛠️ Tech Stack
 
