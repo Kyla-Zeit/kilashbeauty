@@ -1,29 +1,28 @@
-/* ---------- Tailwind v4 entry ---------- */
+/* Tailwind v4 entry */
 @import "tailwindcss";
-/* Remove this if you don't use it */
+/* Remove this if you didn't install it */
 @import "tw-animate-css";
 
 /* Dark-mode helper (v4) */
 @custom-variant dark (&:is(.dark *));
 
-/* ---------- Global behavior ---------- */
+/* Smooth anchor scrolling + compensate sticky header height (~80px) */
 html { scroll-behavior: smooth; }
-/* Use on each section to offset sticky navbar (~80px) */
 .scroll-mt-header { scroll-margin-top: 80px; }
 
-/* =======================================
-   Design Tokens (Light & Dark)
-   ======================================= */
+/* ---------- Design tokens (FIXED) ---------- */
 :root {
-  /* KilashBeauty brand gradient stops */
+  /* Brand gradient (logo) */
   --brand-from: #3B82F6;  /* blue-500  */
   --brand-mid:  #8B5CF6;  /* violet-600 */
   --brand-to:   #EC4899;  /* pink-500  */
-  --kb-pink:    #EC6AD9;  /* legacy brand pink */
 
-  /* Surfaces / text */
+  /* Brand pink used on hovers */
+  --kb-pink: #EC6AD9;
+
+  /* LIGHT THEME (default) */
   --background: #FFFFFF;
-  --foreground: #1F2937; /* slate-800 */
+  --foreground: #1F2937;           /* slate-800 */
 
   --card: #FFFFFF;
   --card-foreground: #1F2937;
@@ -31,33 +30,28 @@ html { scroll-behavior: smooth; }
   --popover: #FFFFFF;
   --popover-foreground: #111827;
 
-  /* Primary + hover (darker purple per request) */
-  --primary: #8B5CF6;        /* violet-600 */
-  --primary-hover: #6D28D9;  /* violet-700 */
+  --primary: #8B5CF6;              /* violet-600 */
   --primary-foreground: #FFFFFF;
 
-  /* Secondary */
-  --secondary: #F5F3FF;             /* indigo-50 */
-  --secondary-foreground: #4C1D95;  /* indigo-900 */
+  --secondary: #F5F3FF;            /* indigo-50 */
+  --secondary-foreground: #4C1D95; /* indigo-900 */
 
-  /* Muted / accent */
   --muted: #F8FAFC;
   --muted-foreground: #475569;
 
-  --accent: #FCE7F3;                /* pink-50 */
-  --accent-foreground: #9D174D;     /* rose-800 */
+  --accent: #FCE7F3;               /* pink-50 */
+  --accent-foreground: #9D174D;    /* rose-800 */
 
-  /* Status / strokes */
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
 
   --border: #E5E7EB;
-  --input:  #E5E7EB;
-  --ring:   #C4B5FD;
+  --input: #E5E7EB;
+  --ring: #C4B5FD;
 
   --radius: .5rem;
 
-  /* Optional chart colors */
+  /* Optional charts */
   --chart-1: #7C3AED;
   --chart-2: #06B6D4;
   --chart-3: #10B981;
@@ -65,51 +59,40 @@ html { scroll-behavior: smooth; }
   --chart-5: #EF4444;
 }
 
+/* DARK THEME OVERRIDES ONLY */
 .dark {
-  /* Keep brand pink available in dark too */
   --kb-pink: #EC6AD9;
 
-  /* Dark theme surfaces (no heavy true black) */
-  --background: #0F1324;
-  --foreground: #E5E7EB;
+  --background: #0F172A;          /* slate-900 */
+  --foreground: #F8FAFC;          /* slate-50  */
 
-  --card: #10162B;
-  --card-foreground: #E5E7EB;
+  --card: #0B1220;
+  --card-foreground: #F8FAFC;
 
-  --popover: #10162B;
-  --popover-foreground: #E5E7EB;
+  --popover: #0B1220;
+  --popover-foreground: #F8FAFC;
 
-  /* Primary + hover in dark */
-  --primary: #A78BFA;        /* violet-400 */
-  --primary-hover: #8B5CF6;  /* violet-600 */
+  --primary: #A78BFA;             /* violet-400 */
   --primary-foreground: #0B1220;
 
-  --secondary: #1B2140;
-  --secondary-foreground: #E5E7EB;
+  --secondary: #1E1B4B;           /* indigo-950 */
+  --secondary-foreground: #EDE9FE;/* indigo-100 */
 
-  --muted: #1A2038;
-  --muted-foreground: #BAC3D3;
+  --muted: #111827;               /* gray-900  */
+  --muted-foreground: #9CA3AF;    /* gray-400  */
 
-  --accent: #241B2F;
-  --accent-foreground: #F9A8D4;
+  --accent: #3B0764;              /* purple-950 */
+  --accent-foreground: #FCE7F3;
 
   --destructive: #F87171;
   --destructive-foreground: #0B1220;
 
-  --border: #252A45;
-  --input:  #252A45;
-  --ring:   #6D28D9;
-
-  --chart-1: #8B5CF6;
-  --chart-2: #22D3EE;
-  --chart-3: #34D399;
-  --chart-4: #F59E0B;
-  --chart-5: #F43F5E;
+  --border: #1F2937;              /* gray-800  */
+  --input: #1F2937;
+  --ring: #7C3AED;                /* violet-600 */
 }
 
-/* =======================================
-   Map tokens to Tailwind CSS variables
-   ======================================= */
+/* Map tokens to Tailwind v4 theme vars */
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -154,19 +137,15 @@ html { scroll-behavior: smooth; }
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* =======================================
-   Base
-   ======================================= */
+/* ---------- Base tweaks ---------- */
 @layer base {
   * { @apply border-border outline-ring/50; }
   body { @apply bg-background text-foreground; }
 }
 
-/* =======================================
-   Utilities
-   ======================================= */
+/* ---------- Utilities (brand helpers + animations) ---------- */
 @layer utilities {
-  /* Brand gradients */
+  /* Brand helpers */
   .bg-brand-gradient {
     background-image: linear-gradient(90deg, var(--brand-from), var(--brand-mid), var(--brand-to));
   }
@@ -182,20 +161,21 @@ html { scroll-behavior: smooth; }
   }
   .btn-brand:hover { filter: brightness(1.03); }
 
-  /* ----- Animations (slightly faster) ----- */
+  /* Keyframes */
   @keyframes fadeUp      { from {opacity:0; transform:translateY(30px)} to {opacity:1; transform:translateY(0)} }
   @keyframes fadeIn      { from {opacity:0} to {opacity:1} }
   @keyframes fadeInLeft  { from {opacity:0; transform:translateX(-30px)} to {opacity:1; transform:translateX(0)} }
   @keyframes fadeInRight { from {opacity:0; transform:translateX( 30px)} to {opacity:1; transform:translateX(0)} }
   @keyframes scaleIn     { from {opacity:0; transform:scale(.95)} to {opacity:1; transform:scale(1)} }
 
+  /* Faster durations (your preference) */
   .animate-fade-up        { animation: fadeUp .50s ease-out both;     will-change: transform, opacity; }
   .animate-fade-in        { animation: fadeIn .45s ease-out both;     will-change: opacity; }
   .animate-fade-in-left   { animation: fadeInLeft .50s ease-out both; will-change: transform, opacity; }
   .animate-fade-in-right  { animation: fadeInRight .50s ease-out both;will-change: transform, opacity; }
   .animate-scale-in       { animation: scaleIn .45s ease-out both;    will-change: transform, opacity; }
 
-  /* Stagger helpers */
+  /* Staggers */
   .animate-delay-100 { animation-delay:.08s }
   .animate-delay-200 { animation-delay:.16s }
   .animate-delay-300 { animation-delay:.24s }
@@ -204,49 +184,58 @@ html { scroll-behavior: smooth; }
   .animate-delay-600 { animation-delay:.48s }
   .animate-delay-700 { animation-delay:.56s }
 
-  /* Prefer-reduced-motion: kill animations for accessibility */
-  @media (prefers-reduced-motion: reduce) {
-    .animate-fade-up,
-    .animate-fade-in,
-    .animate-fade-in-left,
-    .animate-fade-in-right,
-    .animate-scale-in { animation: none !important; }
-  }
-
-  /* Reveal baseline (used by <Reveal/>) */
+  /* Helpers */
   .animate-on-scroll { opacity: 0; }
-
-  /* Smooth micro-interactions */
   .transition-all-smooth { transition: all .3s cubic-bezier(.4,0,.2,1); }
   .hover-lift { transition: transform .3s ease, box-shadow .3s ease; }
-  .hover-lift:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / .1), 0 10px 10px -5px rgb(0 0 0 / .04);
-  }
+  .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / .1), 0 10px 10px -5px rgb(0 0 0 / .04); }
 
-  /* Footer heart (explicit red) */
-  .footer-heart { color: #EF4444; }
+  /* Red heart helper (footer) */
+  .heart-red { color: #EF4444; }
 }
 
-/* =======================================
-   Edge Feather (bottom-only soft fade)
-   ======================================= */
-/* Mask that fades only the bottom edge */
+/* ---------- EDGE FEATHER (corners/edges soften) ---------- */
+/* Base mask (modern browsers) */
+.edge-feather {
+  --fade: 80px;
+  -webkit-mask-image:
+    linear-gradient(to right,
+      transparent 0,
+      #000 var(--fade),
+      #000 calc(100% - var(--fade)),
+      transparent 100%),
+    linear-gradient(to bottom,
+      transparent 0,
+      #000 var(--fade),
+      #000 calc(100% - var(--fade)),
+      transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(to right,
+      transparent 0,
+      #000 var(--fade),
+      #000 calc(100% - var(--fade)),
+      transparent 100%),
+    linear-gradient(to bottom,
+      transparent 0,
+      #000 var(--fade),
+      #000 calc(100% - var(--fade)),
+      transparent 100%);
+          mask-composite: intersect;
+}
+
+/* Bottom-only feather */
 .edge-feather-b {
-  --fade: 5px; /* tweak to 6–10px if you want stronger feather */
+  --fade: 5px; /* adjust 5–12px to taste */
   -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent 100%);
           mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent 100%);
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
 }
-/* Variants if you want a stronger fade */
 .edge-feather-b-8  { --fade: 8px; }
 .edge-feather-b-12 { --fade: 12px; }
 
-/* Safari/old fallback: subtle bottom gradient */
-.edge-feather-b--fallback {
-  position: relative;
-}
+/* Safari fallback */
 .edge-feather-b--fallback::after {
   content: "";
   position: absolute;
@@ -255,18 +244,4 @@ html { scroll-behavior: smooth; }
   pointer-events: none;
   background: linear-gradient(to bottom, rgba(255,255,255,0), var(--background, #fff));
   opacity: .45;
-}
-
-/* Optional: soft radial vignette helper if needed */
-.soft-edges {
-  -webkit-mask-image: radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 98%);
-          mask-image: radial-gradient(120% 120% at 50% 50%, #000 62%, transparent 98%);
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-}
-@media (min-width: 1024px) {
-  .soft-edges {
-    -webkit-mask-image: radial-gradient(140% 140% at 50% 50%, #000 64%, transparent 98%);
-            mask-image: radial-gradient(140% 140% at 50% 50%, #000 64%, transparent 98%);
-  }
 }
