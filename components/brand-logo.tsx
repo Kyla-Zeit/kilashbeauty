@@ -1,59 +1,46 @@
-'use client'
+// components/brand-logo.tsx
+import * as React from "react"
 
-import * as React from 'react'
-import clsx from 'clsx'
-
-type BrandLogoProps = {
-  className?: string
-  /** Set true to hide the wordmark and show only the icon (handy on tight layouts). */
-  compact?: boolean
-}
-
-/**
- * KilashBeauty navbar logo: gradient lash “swoosh” + wordmark.
- * Transparent background, scales crisply at any size.
- */
-export default function BrandLogo({ className, compact = false }: BrandLogoProps) {
+export default function BrandLogo({ className = "h-16 w-auto" }: { className?: string }) {
   return (
-    <div className={clsx('flex items-center gap-2 select-none', className)}>
-      {/* Icon mark */}
-      <svg
-        width="28"
-        height="20"
-        viewBox="0 0 56 40"
-        aria-hidden="true"
-        className="shrink-0"
-      >
-        <defs>
-          <linearGradient id="kb-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#7C3AED" />   {/* violet-600 */}
-            <stop offset="100%" stopColor="#EC4899" /> {/* pink-500 */}
-          </linearGradient>
-        </defs>
+    <svg
+      viewBox="0 0 360 80"
+      className={className}
+      role="img"
+      aria-label="KILASHBEAUTY logo"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMinYMid meet"
+    >
+      <defs>
+        <linearGradient id="kb-gradient" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+          <stop offset="0" stopColor="#2E7CF5" />
+          <stop offset="1" stopColor="#EC6AD9" />
+        </linearGradient>
+      </defs>
 
-        {/* Lash swoosh */}
+      {/* Lash icon (left) */}
+      <g transform="translate(12,18) scale(0.36)">
         <path
-          d="M4 26c6-10 18-16 28-16s22 6 28 16"
-          fill="none"
-          stroke="url(#kb-grad)"
-          strokeWidth="6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          d="M18 46c20-18 50-30 82-30 28 0 51 9 66 17 16 8 29 12 43 12 15 0 26-4 33-10
+             -6 11-22 22-46 22-16 0-30-4-47-12-17-8-37-16-64-16-28 0-50 8-61 17z"
+          fill="url(#kb-gradient)"
         />
-        {/* Accent dot */}
-        <circle cx="48" cy="12" r="3" fill="url(#kb-grad)" />
-      </svg>
+        <path
+          d="M104 70c11 7 25 12 46 12 22 0 39-8 52-17-10 18-33 31-65 31-24 0-43-7-57-17z"
+          fill="url(#kb-gradient)"
+        />
+      </g>
 
-      {/* Wordmark */}
-      {!compact && (
-        <span
-          className="font-semibold tracking-widest text-base leading-none
-                     bg-gradient-to-r from-violet-600 to-pink-500 bg-clip-text text-transparent"
-          style={{ letterSpacing: '0.12em' }}
-        >
-          KILASHBEAUTY
-        </span>
-      )}
-    </div>
+      {/* Wordmark (icon is left of text) */}
+      <text
+        x="104" y="50"
+        fontFamily="Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif"
+        fontSize="26" fontWeight="800" letterSpacing="2"
+        fill="#111114"
+      >
+        KILASHBEAUTY
+      </text>
+    </svg>
   )
 }
