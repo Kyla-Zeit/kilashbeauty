@@ -33,12 +33,12 @@ export function Navigation() {
           <div className="flex-shrink-0 animate-fade-in-left animate-delay-100">
             <a href="#home" onClick={(e) => handleNavClick(e, 'home')} aria-label="Go to top">
               <Image
-                src={logoSrc}
-                alt="KILASHBEAUTY"
-                width={140}
-                height={40}
-                priority
-                className="h-8 w-auto"
+  src={logoSrc}
+  alt="KILASHBEAUTY"
+  width={140}
+  height={40}
+  priority
+  className="h-8 w-auto"
               />
             </a>
           </div>
