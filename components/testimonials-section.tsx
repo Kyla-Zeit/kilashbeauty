@@ -68,7 +68,7 @@ export function TestimonialsSection() {
             <Reveal
               key={t.name}
               animation="animate-fade-up"
-              delay={(i + 1) * 70}           // small stagger
+              delay={(i + 1) * 70}           // small stagger, faster
               threshold={0.2}
               rootMargin="0px 0px -10% 0px"
             >
