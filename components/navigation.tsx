@@ -1,76 +1,75 @@
-// components/navigation.tsx
-'use client'
+"use client"
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { Menu, X, Phone } from 'lucide-react'
-import { withBase } from '@/lib/basePath'
+import { useState } from "react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Menu, X, Phone } from "lucide-react"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
-  // use basePath-aware src (important!)
-  const logoSrc = withBase('/logo-kilashbeauty.svg')
-
+  // Smooth-scroll and close the mobile menu
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
     setIsOpen(false)
     const el = document.getElementById(id)
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      history.pushState(null, '', `#${id}`)
+      el.scrollIntoView({ behavior: "smooth", block: "start" })
+      history.pushState(null, "", `#${id}`)
     }
   }
 
   return (
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
+          {/* Brand — bigger logo */}
+          <Link
+            href="/"
+            onClick={(e) => {
+              e.preventDefault()
+              setIsOpen(false)
+              window.scrollTo({ top: 0, behavior: "smooth" })
+              history.pushState(null, "", "#home")
+            }}
+            className="flex items-center gap-3"
+            aria-label="Go to top"
+          >
+            <img
+              src="/logo-kilashbeauty.svg?v=5"
+              alt="KILASHBEAUTY"
+              className="h-12 sm:h-14 md:h-16 w-auto object-contain select-none"
+            />
+          </Link>
 
-          {/* Clickable logo -> scroll to #home */}
-          <div className="flex-shrink-0 animate-fade-in-left animate-delay-100">
-            <a href="#home" onClick={(e) => handleNavClick(e, 'home')} aria-label="Go to top">
-              <Image
-  src={logoSrc}
-  alt="KILASHBEAUTY"
-  width={140}
-  height={40}
-  priority
-  className="h-8 w-auto"
-              />
-            </a>
-          </div>
-
-          {/* Desktop nav */}
+          {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-center space-x-8">
               <a
                 href="#services"
-                onClick={(e) => handleNavClick(e, 'services')}
-                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-300"
+                onClick={(e) => handleNavClick(e, "services")}
+                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-200"
               >
                 Services
               </a>
               <a
                 href="#gallery"
-                onClick={(e) => handleNavClick(e, 'gallery')}
-                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-400"
+                onClick={(e) => handleNavClick(e, "gallery")}
+                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-300"
               >
                 Gallery
               </a>
               <a
                 href="#testimonials"
-                onClick={(e) => handleNavClick(e, 'testimonials')}
-                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-500"
+                onClick={(e) => handleNavClick(e, "testimonials")}
+                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-400"
               >
                 Testimonials
               </a>
               <a
                 href="#contact"
-                onClick={(e) => handleNavClick(e, 'contact')}
-                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-600"
+                onClick={(e) => handleNavClick(e, "contact")}
+                className="text-foreground hover:text-primary transition-colors animate-fade-in animate-delay-500"
               >
                 Contact
               </a>
@@ -85,9 +84,7 @@ export function Navigation() {
               <Phone className="w-4 h-4 mr-2" />
               (123) 456-7890
             </a>
-            <Link href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick(e as any, 'contact'); }}>
-              <Button className="hover-lift">Book Now</Button>
-            </Link>
+            <Button className="hover-lift">Book Now</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -102,42 +99,40 @@ export function Navigation() {
           </div>
         </div>
 
-        {/* Mobile nav */}
+        {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden animate-fade-up animate-delay-100">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card border-t border-border">
               <a
                 href="#services"
-                onClick={(e) => handleNavClick(e, 'services')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-200"
+                onClick={(e) => handleNavClick(e, "services")}
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-100"
               >
                 Services
               </a>
               <a
                 href="#gallery"
-                onClick={(e) => handleNavClick(e, 'gallery')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-300"
+                onClick={(e) => handleNavClick(e, "gallery")}
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-200"
               >
                 Gallery
               </a>
               <a
                 href="#testimonials"
-                onClick={(e) => handleNavClick(e, 'testimonials')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-400"
+                onClick={(e) => handleNavClick(e, "testimonials")}
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-300"
               >
                 Testimonials
               </a>
               <a
                 href="#contact"
-                onClick={(e) => handleNavClick(e, 'contact')}
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-500"
+                onClick={(e) => handleNavClick(e, "contact")}
+                className="block px-3 py-2 text-foreground hover:text-primary transition-colors animate-fade-in-left animate-delay-400"
               >
                 Contact
               </a>
-              <div className="px-3 py-2 animate-fade-in animate-delay-600">
-                <Link href="#contact" onClick={(e) => { e.preventDefault(); handleNavClick(e as any, 'contact'); }}>
-                  <Button className="w-full hover-lift">Book Now</Button>
-                </Link>
+              <div className="px-3 py-2 animate-fade-in animate-delay-500">
+                <Button className="w-full hover-lift">Book Now</Button>
               </div>
             </div>
           </div>
