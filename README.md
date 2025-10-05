@@ -48,6 +48,7 @@ kilashbeauty/
 ├─ package.json
 └─ README.md
 
+
 ## 🛠️ Tech Stack
 
 - **Next.js (App Router)**
