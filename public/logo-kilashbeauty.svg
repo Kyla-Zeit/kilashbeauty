@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="320" height="96" viewBox="0 0 320 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KILASHBEAUTY logo">
+<svg width="360" height="80" viewBox="0 0 360 80" fill="none"
+     xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="KILASHBEAUTY logo" preserveAspectRatio="xMinYMid meet">
   <defs>
     <linearGradient id="kb-gradient" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
-      <stop offset="0"  stop-color="#2E7CF5"/>
-      <stop offset="1"  stop-color="#EC6AD9"/>
+      <stop offset="0" stop-color="#2E7CF5"/>
+      <stop offset="1" stop-color="#EC6AD9"/>
     </linearGradient>
   </defs>
 
-  <!-- ICON: lowered so the top doesn't clip -->
-  <g transform="translate(0,-8)">
+  <!-- Lash icon (left) -->
+  <g transform="translate(12,18) scale(0.36)">
     <path d="M18 46c20-18 50-30 82-30 28 0 51 9 66 17 16 8 29 12 43 12 15 0 26-4 33-10
              -6 11-22 22-46 22-16 0-30-4-47-12-17-8-37-16-64-16-28 0-50 8-61 17z"
           fill="url(#kb-gradient)"/>
@@ -16,10 +18,10 @@
           fill="url(#kb-gradient)"/>
   </g>
 
-  <!-- WORDMARK -->
-  <text x="0" y="92"
-        font-family="system-ui,-apple-system,Segoe UI,Inter,Arial,sans-serif"
-        font-size="28" font-weight="700" letter-spacing="2" fill="#111114">
+  <!-- Wordmark (final spacing) -->
+  <text x="110" y="50"
+        font-family="Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif"
+        font-size="26" font-weight="800" letter-spacing="2" fill="#111114">
     KILASHBEAUTY
   </text>
 </svg>
