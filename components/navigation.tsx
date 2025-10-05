@@ -1,9 +1,55 @@
+// components/navigation.tsx
 "use client"
 
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Phone } from "lucide-react"
+
+/** Inline brand mark so it never 404s and spacing is pixel-perfect */
+function BrandLogo({ className = "h-12 sm:h-14 md:h-16 w-auto" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 360 80"
+      className={className + " block"} // block prevents baseline cropping
+      role="img"
+      aria-label="KILASHBEAUTY logo"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMinYMid meet"
+    >
+      <defs>
+        <linearGradient id="kb-gradient" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+          <stop offset="0" stopColor="#2E7CF5" />
+          <stop offset="1" stopColor="#EC6AD9" />
+        </linearGradient>
+      </defs>
+
+      {/* Lash icon (left) — vertical alignment tuned */}
+      <g transform="translate(12,18) scale(0.36)">
+        <path
+          d="M18 46c20-18 50-30 82-30 28 0 51 9 66 17 16 8 29 12 43 12 15 0 26-4 33-10
+             -6 11-22 22-46 22-16 0-30-4-47-12-17-8-37-16-64-16-28 0-50 8-61 17z"
+          fill="url(#kb-gradient)"
+        />
+        <path
+          d="M104 70c11 7 25 12 46 12 22 0 39-8 52-17-10 18-33 31-65 31-24 0-43-7-57-17z"
+          fill="url(#kb-gradient)"
+        />
+      </g>
+
+      {/* Wordmark — final spacing so it sits nicely beside the icon */}
+      <text
+        x="104" y="50"
+        fontFamily="Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif"
+        fontSize="26" fontWeight="800" letterSpacing="2"
+        fill="#111114"
+      >
+        KILASHBEAUTY
+      </text>
+    </svg>
+  )
+}
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -23,7 +69,7 @@ export function Navigation() {
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Brand — bigger logo */}
+          {/* Brand — clickable logo goes home/top */}
           <Link
             href="/"
             onClick={(e) => {
@@ -35,11 +81,7 @@ export function Navigation() {
             className="flex items-center gap-3"
             aria-label="Go to top"
           >
-            <img
-              src="/logo-kilashbeauty.svg?v=5"
-              alt="KILASHBEAUTY"
-              className="h-12 sm:h-14 md:h-16 w-auto object-contain select-none"
-            />
+            <BrandLogo />
           </Link>
 
           {/* Desktop Navigation */}
@@ -76,6 +118,7 @@ export function Navigation() {
             </div>
           </div>
 
+          {/* Right side (desktop) */}
           <div className="hidden md:flex items-center space-x-4 animate-fade-in-right animate-delay-300">
             <a
               href="tel:+1234567890"
