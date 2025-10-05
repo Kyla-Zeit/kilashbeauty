@@ -14,7 +14,6 @@ export function Navigation() {
     const el = document.getElementById(id)
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      // keep hash in the URL
       history.pushState(null, '', `#${id}`)
     }
   }
@@ -23,14 +22,21 @@ export function Navigation() {
     <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50 animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
+          {/* Logo now clickable -> scrolls to #home */}
           <div className="flex-shrink-0 animate-fade-in-left animate-delay-100">
-            <h1 className="text-2xl font-bold text-primary">LuxeLash Studio</h1>
+            <a
+              href="#home"
+              onClick={(e) => handleNavClick(e, 'home')}
+              aria-label="Go to Home"
+              className="inline-block text-2xl font-bold text-primary"
+            >
+              LuxeLash Studio
+            </a>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation (Home removed; About -> Testimonials earlier) */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {/* Home removed */}
               <a
                 href="#services"
                 onClick={(e) => handleNavClick(e, 'services')}
@@ -45,7 +51,6 @@ export function Navigation() {
               >
                 Gallery
               </a>
-              {/* About -> Testimonials */}
               <a
                 href="#testimonials"
                 onClick={(e) => handleNavClick(e, 'testimonials')}
@@ -90,7 +95,6 @@ export function Navigation() {
         {isOpen && (
           <div className="md:hidden animate-fade-up animate-delay-100">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card border-t border-border">
-              {/* Home removed */}
               <a
                 href="#services"
                 onClick={(e) => handleNavClick(e, 'services')}
@@ -105,7 +109,6 @@ export function Navigation() {
               >
                 Gallery
               </a>
-              {/* About -> Testimonials */}
               <a
                 href="#testimonials"
                 onClick={(e) => handleNavClick(e, 'testimonials')}
