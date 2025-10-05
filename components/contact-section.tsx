@@ -51,15 +51,15 @@ export function ContactSection() {
             </Card>
           </Reveal>
 
-          {/* Contact Information — column enters from right, cards stagger */}
+          {/* Contact Information — column enters from right, cards stagger (faster) */}
           <Reveal
             animation="animate-fade-in-right"
-            delay={110}
+            delay={70}                  // was 110
             threshold={0.18}
             rootMargin="0px 0px -10% 0px"
           >
             <div className="space-y-6">
-              <Reveal animation="animate-fade-up" delay={180} threshold={0.2}>
+              <Reveal animation="animate-fade-up" delay={110} threshold={0.2}>
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
@@ -79,7 +79,7 @@ export function ContactSection() {
                 </Card>
               </Reveal>
 
-              <Reveal animation="animate-fade-up" delay={250} threshold={0.2}>
+              <Reveal animation="animate-fade-up" delay={150} threshold={0.2}>
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
@@ -93,7 +93,7 @@ export function ContactSection() {
                 </Card>
               </Reveal>
 
-              <Reveal animation="animate-fade-up" delay={320} threshold={0.2}>
+              <Reveal animation="animate-fade-up" delay={190} threshold={0.2}>
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
@@ -107,7 +107,7 @@ export function ContactSection() {
                 </Card>
               </Reveal>
 
-              <Reveal animation="animate-fade-up" delay={390} threshold={0.2}>
+              <Reveal animation="animate-fade-up" delay={230} threshold={0.2}>
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
@@ -125,7 +125,7 @@ export function ContactSection() {
                 </Card>
               </Reveal>
 
-              <Reveal animation="animate-fade-up" delay={460} threshold={0.2}>
+              <Reveal animation="animate-fade-up" delay={270} threshold={0.2}>
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
