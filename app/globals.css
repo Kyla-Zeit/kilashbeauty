@@ -15,88 +15,50 @@ html { scroll-behavior: smooth; }
 
 /* ---------- Design tokens ---------- */
 :root {
-  /* Luxury palette */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.4 0 0);
+  /* --- KilashBeauty brand palette --- */
+  --brand-from: #3B82F6;  /* blue-500  */
+  --brand-mid:  #8B5CF6;  /* violet-600 */
+  --brand-to:   #EC4899;  /* pink-500  */
 
-  --card: oklch(0.98 0.01 340);
-  --card-foreground: oklch(0.35 0.15 340);
+  /* Site surface on the light side (no heavy black) */
+  --background: #FFFFFF;
+  --foreground: #1F2937; /* slate-800 */
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.4 0 0);
+  /* Components / accents */
+  --card: #FFFFFF;
+  --card-foreground: #1F2937;
+  --popover: #FFFFFF;
+  --popover-foreground: #111827;
 
-  --primary: oklch(0.45 0.25 340);
-  --primary-foreground: oklch(1 0 0);
+  /* Use the mid brand as primary solid; keep text white on it */
+  --primary: #8B5CF6;
+  --primary-foreground: #FFFFFF;
 
-  --secondary: oklch(0.65 0.2 320);
-  --secondary-foreground: oklch(1 0 0);
+  /* Secondary = soft lilac */
+  --secondary: #F5F3FF;                    /* indigo-50-ish */
+  --secondary-foreground: #4C1D95;        /* indigo-900 */
 
-  --muted: oklch(0.98 0.01 340);
-  --muted-foreground: oklch(0.4 0 0);
+  --muted: #F8FAFC;
+  --muted-foreground: #475569;
 
-  --accent: oklch(0.65 0.2 320);
-  --accent-foreground: oklch(1 0 0);
+  --accent: #FCE7F3;                       /* pink-50 */
+  --accent-foreground: #9D174D;           /* rose-800 */
 
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
 
-  --border: oklch(0.9 0.01 340);
-  --input: oklch(0.96 0.01 340);
-  --ring: oklch(0.45 0.25 340 / 0.5);
-
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #C4B5FD;
 
   --radius: .5rem;
 
-  /* sidebar variants */
-  --sidebar: oklch(0.98 0.01 340);
-  --sidebar-foreground: oklch(0.4 0 0);
-  --sidebar-primary: oklch(0.45 0.25 340);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.65 0.2 320);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.9 0.01 340);
-  --sidebar-ring: oklch(0.45 0.25 340 / 0.5);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
+  /* Optional chart colors (kept near brand) */
+  --chart-1: #7C3AED;
+  --chart-2: #06B6D4;
+  --chart-3: #10B981;
+  --chart-4: #F59E0B;
+  --chart-5: #EF4444;
 }
 
 /* Map tokens to Tailwind v4 theme vars */
