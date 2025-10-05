@@ -4,34 +4,28 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
+  // base
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
   {
     variants: {
       variant: {
-        // Solid button
-        default:
-          "bg-primary text-primary-foreground shadow hover:bg-[var(--primary-hover)]",
+        // default filled button -> pink on hover
+        default: "bg-primary text-primary-foreground shadow hover:bg-[var(--kb-pink)]",
 
-        // If you prefer destructive to stay red on hover, swap the next line to:
-        // "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-[var(--primary-hover)]",
+        // destructive (keeps text readable) -> pink on hover per your request
+        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-[var(--kb-pink)]",
 
-        // Outline -> purple fill on hover
-        outline:
-          "border border-input bg-background hover:bg-[var(--primary-hover)] hover:text-white",
+        // outline -> turns pink and white text on hover
+        outline: "border border-input bg-background hover:bg-[var(--kb-pink)] hover:text-white",
 
-        // Secondary -> purple on hover
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-[var(--primary-hover)] hover:text-white",
+        // secondary -> pink on hover
+        secondary: "bg-secondary text-secondary-foreground hover:bg-[var(--kb-pink)]",
 
-        // Ghost -> purple on hover
-        ghost:
-          "hover:bg-[var(--primary-hover)] hover:text-white",
+        // ghost -> pink on hover with white text
+        ghost: "hover:bg-[var(--kb-pink)] hover:text-white",
 
-        // Link -> purple text on hover
-        link:
-          "text-primary underline-offset-4 hover:text-[var(--primary-hover)] hover:underline",
+        // link -> pink text on hover
+        link: "text-primary underline-offset-4 hover:text-[var(--kb-pink)] hover:underline",
       },
       size: {
         default: "h-9 px-4 py-2",
