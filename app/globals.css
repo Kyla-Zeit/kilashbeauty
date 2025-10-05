@@ -6,49 +6,41 @@
 /* Dark-mode helper (v4) */
 @custom-variant dark (&:is(.dark *));
 
-
-/* Smooth anchor scrolling */
+/* Smooth anchor scrolling + compensate sticky header height (~80px) */
 html { scroll-behavior: smooth; }
-
-/* Apply to each section to compensate sticky header height (≈ 80px) */
 .scroll-mt-header { scroll-margin-top: 80px; }
 
-/* ---------- Design tokens ---------- */
+/* ---------- Design tokens (FIXED) ---------- */
 :root {
-  /* --- KilashBeauty brand palette --- */
+  /* Brand gradient (logo) */
   --brand-from: #3B82F6;  /* blue-500  */
   --brand-mid:  #8B5CF6;  /* violet-600 */
   --brand-to:   #EC4899;  /* pink-500  */
-    /* brand pink used on hover */
-  --kb-pink: #EC6AD9; /* matches the logo gradient’s pink */
-}
 
-  .dark {
+  /* Brand pink used on hovers */
   --kb-pink: #EC6AD9;
 
-  /* Site surface on the light side (no heavy black) */
+  /* LIGHT THEME (default) */
   --background: #FFFFFF;
-  --foreground: #1F2937; /* slate-800 */
+  --foreground: #1F2937;           /* slate-800 */
 
-  /* Components / accents */
   --card: #FFFFFF;
   --card-foreground: #1F2937;
+
   --popover: #FFFFFF;
   --popover-foreground: #111827;
 
-  /* Use the mid brand as primary solid; keep text white on it */
-  --primary: #8B5CF6;
+  --primary: #8B5CF6;              /* violet-600 */
   --primary-foreground: #FFFFFF;
 
-  /* Secondary = soft lilac */
-  --secondary: #F5F3FF;                    /* indigo-50-ish */
-  --secondary-foreground: #4C1D95;        /* indigo-900 */
+  --secondary: #F5F3FF;            /* indigo-50 */
+  --secondary-foreground: #4C1D95; /* indigo-900 */
 
   --muted: #F8FAFC;
   --muted-foreground: #475569;
 
-  --accent: #FCE7F3;                       /* pink-50 */
-  --accent-foreground: #9D174D;           /* rose-800 */
+  --accent: #FCE7F3;               /* pink-50 */
+  --accent-foreground: #9D174D;    /* rose-800 */
 
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
@@ -59,12 +51,45 @@ html { scroll-behavior: smooth; }
 
   --radius: .5rem;
 
-  /* Optional chart colors (kept near brand) */
+  /* Optional charts */
   --chart-1: #7C3AED;
   --chart-2: #06B6D4;
   --chart-3: #10B981;
   --chart-4: #F59E0B;
   --chart-5: #EF4444;
+}
+
+/* DARK THEME OVERRIDES ONLY */
+.dark {
+  --kb-pink: #EC6AD9;
+
+  --background: #0F172A;          /* slate-900 */
+  --foreground: #F8FAFC;          /* slate-50  */
+
+  --card: #0B1220;
+  --card-foreground: #F8FAFC;
+
+  --popover: #0B1220;
+  --popover-foreground: #F8FAFC;
+
+  --primary: #A78BFA;             /* violet-400 */
+  --primary-foreground: #0B1220;
+
+  --secondary: #1E1B4B;           /* indigo-950 */
+  --secondary-foreground: #EDE9FE;/* indigo-100 */
+
+  --muted: #111827;               /* gray-900  */
+  --muted-foreground: #9CA3AF;    /* gray-400  */
+
+  --accent: #3B0764;              /* purple-950 */
+  --accent-foreground: #FCE7F3;
+
+  --destructive: #F87171;
+  --destructive-foreground: #0B1220;
+
+  --border: #1F2937;              /* gray-800  */
+  --input: #1F2937;
+  --ring: #7C3AED;                /* violet-600 */
 }
 
 /* Map tokens to Tailwind v4 theme vars */
@@ -118,9 +143,10 @@ html { scroll-behavior: smooth; }
   body { @apply bg-background text-foreground; }
 }
 
-/* ---------- Animation utilities (faster) ---------- */
+/* ---------- Utilities (brand helpers + animations) ---------- */
 @layer utilities {
-    .bg-brand-gradient {
+  /* Brand helpers */
+  .bg-brand-gradient {
     background-image: linear-gradient(90deg, var(--brand-from), var(--brand-mid), var(--brand-to));
   }
   .text-brand-gradient {
@@ -133,43 +159,45 @@ html { scroll-behavior: smooth; }
     @apply text-white;
     background-image: linear-gradient(90deg, var(--brand-mid), var(--brand-to));
   }
-  .btn-brand:hover {
-    filter: brightness(1.03);
-  }
-  /* Keyframes (unchanged) */
-  @keyframes fadeUp       { from {opacity:0; transform:translateY(30px)} to {opacity:1; transform:translateY(0)} }
-  @keyframes fadeIn       { from {opacity:0} to {opacity:1} }
-  @keyframes fadeInLeft   { from {opacity:0; transform:translateX(-30px)} to {opacity:1; transform:translateX(0)} }
-  @keyframes fadeInRight  { from {opacity:0; transform:translateX( 30px)} to {opacity:1; transform:translateX(0)} }
-  @keyframes scaleIn      { from {opacity:0; transform:scale(.95)} to {opacity:1; transform:scale(1)} }
+  .btn-brand:hover { filter: brightness(1.03); }
 
-  /* Classes — only the durations changed */
+  /* Keyframes */
+  @keyframes fadeUp      { from {opacity:0; transform:translateY(30px)} to {opacity:1; transform:translateY(0)} }
+  @keyframes fadeIn      { from {opacity:0} to {opacity:1} }
+  @keyframes fadeInLeft  { from {opacity:0; transform:translateX(-30px)} to {opacity:1; transform:translateX(0)} }
+  @keyframes fadeInRight { from {opacity:0; transform:translateX( 30px)} to {opacity:1; transform:translateX(0)} }
+  @keyframes scaleIn     { from {opacity:0; transform:scale(.95)} to {opacity:1; transform:scale(1)} }
+
+  /* Faster durations (your preference) */
   .animate-fade-up        { animation: fadeUp .50s ease-out both;     will-change: transform, opacity; }
   .animate-fade-in        { animation: fadeIn .45s ease-out both;     will-change: opacity; }
   .animate-fade-in-left   { animation: fadeInLeft .50s ease-out both; will-change: transform, opacity; }
   .animate-fade-in-right  { animation: fadeInRight .50s ease-out both;will-change: transform, opacity; }
   .animate-scale-in       { animation: scaleIn .45s ease-out both;    will-change: transform, opacity; }
 
-  /* Staggers (optional: also speed these up a hair) */
-  .animate-delay-100 { animation-delay:.08s }  /* was .1s */
-  .animate-delay-200 { animation-delay:.16s }  /* was .2s */
+  /* Staggers */
+  .animate-delay-100 { animation-delay:.08s }
+  .animate-delay-200 { animation-delay:.16s }
   .animate-delay-300 { animation-delay:.24s }
   .animate-delay-400 { animation-delay:.32s }
   .animate-delay-500 { animation-delay:.40s }
   .animate-delay-600 { animation-delay:.48s }
   .animate-delay-700 { animation-delay:.56s }
 
-  /* Helpers (unchanged) */
+  /* Helpers */
   .animate-on-scroll { opacity: 0; }
   .transition-all-smooth { transition: all .3s cubic-bezier(.4,0,.2,1); }
   .hover-lift { transition: transform .3s ease, box-shadow .3s ease; }
   .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / .1), 0 10px 10px -5px rgb(0 0 0 / .04); }
+
+  /* Red heart helper (footer) */
+  .heart-red { color: #EF4444; }
 }
 
 /* ---------- EDGE FEATHER (corners/edges soften) ---------- */
 /* Base mask (modern browsers) */
 .edge-feather {
-  --fade: 80px; /* default; overridden by -sm/-md/-lg below */
+  --fade: 80px;
   -webkit-mask-image:
     linear-gradient(to right,
       transparent 0,
@@ -181,7 +209,7 @@ html { scroll-behavior: smooth; }
       #000 var(--fade),
       #000 calc(100% - var(--fade)),
       transparent 100%);
-  -webkit-mask-composite: source-in; /* Chrome/Edge */
+  -webkit-mask-composite: source-in;
           mask-image:
     linear-gradient(to right,
       transparent 0,
@@ -193,32 +221,21 @@ html { scroll-behavior: smooth; }
       #000 var(--fade),
       #000 calc(100% - var(--fade)),
       transparent 100%);
-          mask-composite: intersect;   /* Firefox */
+          mask-composite: intersect;
 }
 
-/* ------- Bottom-only feather ------- */
-/* Visible everywhere except the last --fade px at the bottom */
+/* Bottom-only feather */
 .edge-feather-b {
-  --fade: 5px; /* tweak to 6–10px if 5px is too subtle on your screen */
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #000 calc(100% - var(--fade)),
-    transparent 100%
-  );
-          mask-image: linear-gradient(
-    to bottom,
-    #000 calc(100% - var(--fade)),
-    transparent 100%
-  );
+  --fade: 5px; /* adjust 5–12px to taste */
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent 100%);
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
 }
-
-/* quick size variants (optional) */
-.edge-feather-b-8  { --fade: 8px;  }
+.edge-feather-b-8  { --fade: 8px; }
 .edge-feather-b-12 { --fade: 12px; }
 
-/* Safari fallback: draw a tiny bottom gradient to the page background */
+/* Safari fallback */
 .edge-feather-b--fallback::after {
   content: "";
   position: absolute;
@@ -226,5 +243,5 @@ html { scroll-behavior: smooth; }
   height: var(--fade, 5px);
   pointer-events: none;
   background: linear-gradient(to bottom, rgba(255,255,255,0), var(--background, #fff));
-  opacity: .45; /* lower if you want even softer */
+  opacity: .45;
 }

@@ -1,4 +1,3 @@
-// components/ui/button.tsx
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -10,30 +9,23 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Default filled button
-        default:
-          // remove the old hover:bg-primary/90 and force pink
-          "bg-primary text-primary-foreground shadow hover:bg-[var(--kb-pink)]",
+        // default filled button -> pink on hover
+        default: "bg-primary text-primary-foreground shadow hover:bg-[var(--kb-pink)]",
 
-        // If you want destructive to keep red hover, change this line back to `hover:bg-destructive/90`
-        destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-[var(--kb-pink)]",
+        // destructive (keeps text readable) -> pink on hover per your request
+        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-[var(--kb-pink)]",
 
-        // Outline should go pink on hover and flip text to white
-        outline:
-          "border border-input bg-background hover:bg-[var(--kb-pink)] hover:text-white",
+        // outline -> turns pink and white text on hover
+        outline: "border border-input bg-background hover:bg-[var(--kb-pink)] hover:text-white",
 
-        // Secondary also goes pink
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-[var(--kb-pink)]",
+        // secondary -> pink on hover
+        secondary: "bg-secondary text-secondary-foreground hover:bg-[var(--kb-pink)]",
 
-        // Ghost goes pink with white text
-        ghost:
-          "hover:bg-[var(--kb-pink)] hover:text-white",
+        // ghost -> pink on hover with white text
+        ghost: "hover:bg-[var(--kb-pink)] hover:text-white",
 
-        // Link (text only) turns pink on hover
-        link:
-          "text-primary underline-offset-4 hover:text-[var(--kb-pink)] hover:underline",
+        // link -> pink text on hover
+        link: "text-primary underline-offset-4 hover:text-[var(--kb-pink)] hover:underline",
       },
       size: {
         default: "h-9 px-4 py-2",
