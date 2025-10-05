@@ -69,15 +69,13 @@ export function Footer() {
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">© 2025 KilashBeauty. All rights reserved.</p>
 {/* Right: Tagline with heart */}
-          <p className="flex items-center gap-2">
+           <p className="inline-flex items-center gap-2">
             Made with
-            <span
+            <Heart
+              className="w-4 h-4 text-red-500"
+              fill="currentColor"
               aria-hidden="true"
-              className="text-base leading-none bg-gradient-to-r from-[#2E7CF5] to-[#EC6AD9] bg-clip-text text-transparent"
-              title="love"
-            >
-              ♥
-            </span>
+            />
             for beautiful lashes
           </p>
         </div>
