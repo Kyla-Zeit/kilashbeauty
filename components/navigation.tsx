@@ -30,7 +30,7 @@ export function Navigation() {
               aria-label="Go to Home"
               className="inline-block text-2xl font-bold text-primary"
             >
-              LuxeLash Studio
+              KilashBeauty
             </a>
           </div>
 

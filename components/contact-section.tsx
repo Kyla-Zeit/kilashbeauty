@@ -100,7 +100,7 @@ export function ContactSection() {
                       <Mail className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                       <div>
                         <h3 className="font-semibold mb-1">Email Us</h3>
-                        <p className="text-muted-foreground">hello@luxelashstudio.com</p>
+                        <p className="text-muted-foreground">info@kilashbeauty.ca</p>
                       </div>
                     </div>
                   </CardContent>
@@ -132,7 +132,7 @@ export function ContactSection() {
                       <Instagram className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                       <div>
                         <h3 className="font-semibold mb-1">Follow Us</h3>
-                        <p className="text-muted-foreground">@luxelashstudio</p>
+                        <p className="text-muted-foreground">@kilashbeauty</p>
                         <Button variant="outline" size="sm" className="mt-2 bg-transparent">
                           View Instagram
                         </Button>

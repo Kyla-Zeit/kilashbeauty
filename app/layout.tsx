@@ -7,7 +7,7 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "LuxeLash Studio - Premium Eyelash Extensions",
+  title: "KilashBeauty - Premium Eyelash Extensions",
   description:
     "Transform your look with our professional eyelash extension services. Book your appointment today for stunning, long-lasting results.",
   generator: "v0.app",
