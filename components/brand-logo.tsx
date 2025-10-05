@@ -1,4 +1,3 @@
-// components/brand-logo.tsx
 'use client'
 
 import * as React from 'react'
