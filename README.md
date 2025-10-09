@@ -23,28 +23,30 @@ Designed for clean visuals, smooth section-based navigation, and classy on-scrol
 
 kilashbeauty/
 ├─ app/
-│ ├─ layout.tsx  # Root layout (fonts, providers, global CSS)
-│ ├─ page.tsx  # Homepage (assembles all sections)
-│ └─ globals.css  # Tailwind v4 + design tokens + utilities
-├─ components/
-│ ├─ Reveal.tsx  # IntersectionObserver reveal wrapper
-│ ├─ navigation.tsx  # Sticky navbar (smooth-scroll links)
-│ ├─ hero-section.tsx # Hero with feathered background
-│ ├─ services-section.tsx # Services cards
-│ ├─ gallery-section.tsx # Filterable image gallery
-│ ├─ testimonials-section.tsx# Testimonials grid
-│ ├─ contact-section.tsx # Form + studio info
-│ └─ ui/
-│ └─ button.tsx # Shadcn-style button (variants/hover)
-├─ hooks/ # (Optional) shared hooks
-├─ lib/
-│ └─ basePath.ts # withBase() helper for static export paths
+│  ├─ layout.tsx                 # Root layout: fonts, providers, global CSS
+│  ├─ page.tsx                   # Homepage: assembles all sections
+│  ├─ globals.css                # Tailwind v4 tokens + utilities
+│  ├─ components/
+│  │  ├─ Reveal.tsx              # IntersectionObserver reveal wrapper
+│  │  ├─ navigation.tsx          # Sticky navbar with smooth-scroll links
+│  │  ├─ hero-section.tsx        # Hero with feathered background
+│  │  ├─ services-section.tsx    # Services cards
+│  │  ├─ gallery-section.tsx     # Filterable image gallery
+│  │  ├─ testimonials-section.tsx# Testimonials grid
+│  │  └─ contact-section.tsx     # Form + studio info
+│  ├─ ui/
+│  │  └─ button.tsx              # shadcn/ui-style button (variants/hover)
+│  ├─ hooks/                     # Optional shared hooks
+│  └─ lib/
+│     └─ basePath.ts             # withBase() helper for static export paths
 ├─ public/
-│ ├─ logo-kilashbeauty.svg # Brand logo (inline SVG works too)
-│ ├─ *.jpg / *.png # Gallery and hero assets
-│ └─ favicon.ico
-├─ tailwind.config.ts # (If present; Tailwind v4 supports @import)
-├─ postcss.config.js # (If present)
+│  ├─ logo-kilashbeauty.svg      # Brand logo (inline SVG works too)
+│  ├─ favicon.ico
+│  └─ assets/                    # Images used by hero/gallery
+│     ├─ *.jpg
+│     └─ *.png
+├─ tailwind.config.ts            # If present (Tailwind v4 supports @import)
+├─ postcss.config.js             # If present
 ├─ package.json
 └─ README.md
 
