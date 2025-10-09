@@ -54,9 +54,6 @@ kilashbeauty/
 └── README.md
 </pre>
 
-
-
-
 ---
 
 ## 🛠️ Tech Stack
