@@ -22,7 +22,7 @@ Designed for clean visuals, smooth section-based navigation, and classy on-scrol
 ## 📂 Project Structure
 
 kilashbeauty/
-├─ app/
+│── app/
 │  ├─ layout.tsx                 # Root layout: fonts, providers, global CSS
 │  ├─ page.tsx                   # Homepage: assembles all sections
 │  ├─ globals.css                # Tailwind v4 tokens + utilities
