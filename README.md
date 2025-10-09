@@ -21,29 +21,30 @@ Designed for clean visuals, smooth section-based navigation, and classy on-scrol
 
 ## 📂 Project Structure
 
+<pre>
 kilashbeauty/
 │── app/
-│   │── layout.tsx            # Root layout: fonts, providers, global CSS
-│   │── page.tsx              # Homepage (assembles all sections)
-│   │── globals.css           # Tailwind v4 tokens + utilities
+│   │── layout.tsx
+│   │── page.tsx
+│   │── globals.css
 │   │── components/
-│   │   │── Reveal.tsx        # IntersectionObserver reveal wrapper
-│   │   │── navigation.tsx    # Sticky navbar with smooth-scroll links
-│   │   │── hero-section.tsx  # Hero with feathered background
+│   │   │── Reveal.tsx
+│   │   │── navigation.tsx
+│   │   │── hero-section.tsx
 │   │   │── services-section.tsx
 │   │   │── gallery-section.tsx
 │   │   │── testimonials-section.tsx
 │   │   └── contact-section.tsx
 │   │── ui/
-│   │   └── button.tsx        # shadcn/ui-style button
-│   │── hooks/                # (optional)
+│   │   └── button.tsx
+│   │── hooks/
 │   │── lib/
-│   │   └── basePath.ts       # withBase() helper for static export paths
+│   │   └── basePath.ts
 │
 │── public/
 │   │── logo-kilashbeauty.svg
 │   │── favicon.ico
-│   └── assets/               # Images used by hero/gallery
+│   └── assets/
 │       │── *.jpg
 │       └── *.png
 │
@@ -51,6 +52,8 @@ kilashbeauty/
 │── postcss.config.js
 │── package.json
 └── README.md
+</pre>
+
 
 
 
